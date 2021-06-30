@@ -2,8 +2,8 @@ package com.controle.spring.api.dto.input;
 
 import java.util.List;
 
+import com.controle.spring.domain.model.StatusOrder;
 import com.controle.spring.domain.utils.SpringUtils;
-import com.controle.spring.domain.utils.enums.StatusOrder;
 
 public class OrderInputV1Dto {
 

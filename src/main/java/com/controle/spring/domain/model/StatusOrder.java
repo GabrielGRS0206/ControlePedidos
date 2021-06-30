@@ -1,4 +1,4 @@
-package com.controle.spring.domain.utils.enums;
+package com.controle.spring.domain.model;
 
 public enum StatusOrder {
 

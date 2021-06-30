@@ -11,11 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
-Avaliar melhorias:
-Colocar usuário para controle de abertura e fechamento de caixa
-*/
-
 @Entity
 @Table(name = "cash_register")
 public class CashRegister {

@@ -19,8 +19,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
-import com.controle.spring.domain.utils.enums.StatusOrder;
-
 @Entity
 @Table(name = "order_order")
 public class Order {

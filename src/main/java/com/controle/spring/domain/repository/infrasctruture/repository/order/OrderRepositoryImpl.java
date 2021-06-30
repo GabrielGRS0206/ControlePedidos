@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.controle.spring.domain.model.Order;
+import com.controle.spring.domain.model.StatusOrder;
 import com.controle.spring.domain.utils.connection.ConnectionJdbc;
 import com.controle.spring.domain.utils.connection.DataSourceConnection;
-import com.controle.spring.domain.utils.enums.StatusOrder;
 
 public class OrderRepositoryImpl implements OrderRepositoryQueries {
 

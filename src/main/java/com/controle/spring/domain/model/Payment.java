@@ -1,12 +1,7 @@
-package com.controle.spring.domain.utils.enums;
+package com.controle.spring.domain.model;
 
 public enum Payment {
 
-	/**
-	 * Sugestão de melhoria...
-	 * Poderia ser uma tabela no banco de dados e isso ser cadastrado 
-	 * no sistema,aqui como exemplo coloquei os principais
-	*/
 	DINHEIRO(1, "DINHEIRO"),
 	CARTAO_CREDITO(2, "CARTÃO DE CRÉDITO"),
 	CARTAO_DEBITO(3,"CARTÃO DE DEBITO"),

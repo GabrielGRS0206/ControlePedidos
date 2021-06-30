@@ -20,7 +20,7 @@ public class DataSourceConnection extends HikariConfig{
 	public static DataSource dataSource;
 	public static HikariDataSource hikari;
 	public ConnectionConfig connectionConfig;
-
+	
 	public DataSourceConnection() {
 		super();
 		connectionConfig = new ConnectionConfig();

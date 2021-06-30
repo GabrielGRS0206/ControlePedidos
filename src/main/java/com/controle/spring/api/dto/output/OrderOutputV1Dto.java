@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.controle.spring.domain.model.OrderItem;
+import com.controle.spring.domain.model.StatusOrder;
 import com.controle.spring.domain.utils.SpringUtils;
-import com.controle.spring.domain.utils.enums.StatusOrder;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 

@@ -8,9 +8,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.controle.spring.domain.model.Payment;
 import com.controle.spring.domain.movement.DailyClosing;
 import com.controle.spring.domain.utils.connection.ConnectionJdbc;
-import com.controle.spring.domain.utils.enums.Payment;
 
 @Repository
 public class DailyClosingImpl implements DailyClosingQueries{

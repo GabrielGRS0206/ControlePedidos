@@ -2,7 +2,7 @@ package com.controle.spring.api.dto.output;
 
 import java.math.BigDecimal;
 
-import com.controle.spring.domain.utils.enums.StatusOrder;
+import com.controle.spring.domain.model.StatusOrder;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 

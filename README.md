@@ -41,7 +41,7 @@ Para a parte de movimentação da API temos
    - this.driverClassName = org.mariadb.jdbc.Driver
    - this.url = bc:mariadb://localhost:3306/seuBancoDeDados?useSSL=false
 
-4) Na classe App. http://localhost:8080/swagger-ui.html
+4) Na classe App de um run na sua IDE.
 5) Acesse: http://localhost:8080/swagger-ui.html para visualizar os endpoints
 
 
