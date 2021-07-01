@@ -34,13 +34,6 @@ Para a parte de movimentação da API temos
     - spring.datasource.username=usuario
     - spring.datasource.password=senha
     - spring.datasource.url = jdbc:mariadb://localhost:3306/seuBancoDeDados?useSSL=false
-   * Na classe com.controle.spring.domain.utils.connection.configJdbc.ConnectionConfig altere 
-   os dados:
-   - this.username = usuario
-   - this.password = senha 
-   - this.driverClassName = org.mariadb.jdbc.Driver
-   - this.url = bc:mariadb://localhost:3306/seuBancoDeDados?useSSL=false
-
 4) Na classe App de um run na sua IDE.
 5) Acesse: http://localhost:8080/swagger-ui.html para visualizar os endpoints
 
