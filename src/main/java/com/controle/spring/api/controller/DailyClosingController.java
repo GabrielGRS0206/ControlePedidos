@@ -38,7 +38,7 @@ public class DailyClosingController extends BaseController{
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
 	public ResponseEntity<Object> totaisPorCaixa(@PathVariable Long id) {
 
-		List<DailyClosing> list = service.listV2(id);
+		List<DailyClosing> list = service.list(id);
 		
 		List<DailyClosingV1Dto> listDto = list
 				.stream()
