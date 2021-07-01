@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/v1/cash_register")
+@RequestMapping("/api/v1/cash_register")
 public class CashRegisterV1Controller extends BaseController{
 
 	public CashRegisterService service;

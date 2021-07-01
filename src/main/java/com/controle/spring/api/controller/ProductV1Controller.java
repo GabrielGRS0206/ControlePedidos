@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/v1/products")
+@RequestMapping("/api/v1/products")
 @Api("Mercadorias")
 public class ProductV1Controller extends BaseController{
 

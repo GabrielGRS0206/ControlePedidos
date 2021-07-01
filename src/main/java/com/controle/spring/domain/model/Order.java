@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "order_order")
+@Table(name = "tb_order")
 public class Order {
 
 	@Id
@@ -33,17 +33,17 @@ public class Order {
 	@ManyToOne
 	@JoinColumn(name = "id_client" )
 	private Client client;
-	
+
 	@Column(precision = 15,scale = 2)
 	private BigDecimal total;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_cash_register" )
 	private CashRegister cashRegister;
 
 	@Column(name = "cash_register_id")
 	private Long cashRegisterId;
-	
+
 	@OneToMany(mappedBy="order") 
 	private List<OrderItem> items;
 
@@ -79,162 +79,142 @@ public class Order {
 
 	@Column(name = "delivery",length = 2)
 	private String delivery;
-	
+
 	//PAGAMENTO
 	private Integer payment1;
-	
-	private Integer payment2;
-
 
 	public void setCaixaId(Long caixaId) {
 		this.cashRegister = new CashRegister(caixaId);
 		this.cashRegisterId = caixaId;
 	}
 
+	public Order() {
+		super();
+	}
+
+	public Order(Long id,Date date,String contact,String name,BigDecimal total) {
+		this.setIdOrder(id);
+		this.setData(date);
+		this.setContact(contact);
+		this.setNameClient(name);
+		this.setTotal(total);
+	}
+
 	public Long getIdOrder() {
 		return idOrder;
 	}
-
 
 	public void setIdOrder(Long idOrder) {
 		this.idOrder = idOrder;
 	}
 
-
 	public Date getData() {
 		return data;
 	}
-
 
 	public void setData(Date data) {
 		this.data = data;
 	}
 
-
 	public Client getClient() {
 		return client;
 	}
-
 
 	public void setClient(Client client) {
 		this.client = client;
 	}
 
-
 	public BigDecimal getTotal() {
 		return total;
 	}
-
 
 	public void setTotal(BigDecimal total) {
 		this.total = total;
 	}
 
-
 	public CashRegister getCashRegister() {
 		return cashRegister;
 	}
-
 
 	public void setCashRegister(CashRegister cashRegister) {
 		this.cashRegister = cashRegister;
 	}
 
-
 	public Long getCashRegisterId() {
 		return cashRegisterId;
 	}
-
 
 	public void setCashRegisterId(Long cashRegisterId) {
 		this.cashRegisterId = cashRegisterId;
 	}
 
-
 	public List<OrderItem> getItems() {
 		return items;
 	}
-
 
 	public void setItems(List<OrderItem> items) {
 		this.items = items;
 	}
 
-
 	public String getNameClient() {
 		return nameClient;
 	}
-
 
 	public void setNameClient(String nameClient) {
 		this.nameClient = nameClient;
 	}
 
-
 	public String getContact() {
 		return contact;
 	}
-
 
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
 
-
 	public String getStreet() {
 		return street;
 	}
-
 
 	public void setStreet(String street) {
 		this.street = street;
 	}
 
-
 	public String getDistrict() {
 		return district;
 	}
-
 
 	public void setDistrict(String district) {
 		this.district = district;
 	}
 
-
 	public String getComplement() {
 		return complement;
 	}
-
 
 	public void setComplement(String complement) {
 		this.complement = complement;
 	}
 
-
 	public String getProximity() {
 		return proximity;
 	}
-
 
 	public void setProximity(String proximity) {
 		this.proximity = proximity;
 	}
 
-
 	public String getObservation() {
 		return observation;
 	}
-
 
 	public void setObservation(String observation) {
 		this.observation = observation;
 	}
 
-
 	public StatusOrder getStatus() {
 		return status;
 	}
-
 
 	public void setStatus(StatusOrder status) {
 		this.status = status;
@@ -248,14 +228,6 @@ public class Order {
 		this.payment1 = payment1;
 	}
 
-	public Integer getPayment2() {
-		return payment2;
-	}
-
-	public void setPayment2(Integer payment2) {
-		this.payment2 = payment2;
-	}
-
 	public String getDelivery() {
 		return delivery;
 	}
@@ -263,7 +235,4 @@ public class Order {
 	public void setDelivery(String delivery) {
 		this.delivery = delivery;
 	}
-	
-	
-
 }

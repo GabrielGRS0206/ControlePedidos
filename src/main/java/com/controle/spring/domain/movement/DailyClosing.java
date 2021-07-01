@@ -2,6 +2,8 @@ package com.controle.spring.domain.movement;
 
 import java.math.BigDecimal;
 
+import com.controle.spring.domain.model.Payment;
+
 public class DailyClosing {
 
 	private Integer codPayment;
@@ -12,9 +14,9 @@ public class DailyClosing {
 		super();
 	}
 	
-	public DailyClosing(Integer cod,String payment,BigDecimal total) {
+	public DailyClosing(Integer cod,BigDecimal total) {
 		this.codPayment = cod;
-		this.payment = payment;
+		this.payment = Payment.descriptionCod(cod);
 		this.total = total;
 	}
 

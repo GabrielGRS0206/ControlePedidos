@@ -29,4 +29,13 @@ public class DailyClosingService{
 		
 		return repository.totalCashRegister(id);
 	}
+	
+	public List<DailyClosing> listV2(long id){
+		
+		if(!cashRegisterService.existsById(id)) {
+			throw new CashRegisterException(id);
+		}
+		
+		return repository.totalCashRegister(id);
+	}
 }

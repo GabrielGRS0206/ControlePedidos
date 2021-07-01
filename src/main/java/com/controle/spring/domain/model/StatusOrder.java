@@ -7,35 +7,38 @@ public enum StatusOrder {
 	FINALIZADA("FINALIZADA",3),
 	CANCELADA("CANCELADA",4);
 
-	private String descricao;
-	private Integer value;
+	private String description;
+	private Integer cod;
 
-	StatusOrder(String descricao, Integer value) {
-		this.descricao = descricao;
-		this.value = value;
+	StatusOrder(String description, Integer code) {
+		this.description = description;
+		this.cod = code;
 	}
 
 	public static String valueOfPorCodigo(Integer value){
 		String retorno = "";
 		for(StatusOrder cod : StatusOrder.values()){
-			if(cod.getValue().equals(value)){
-				retorno = cod.getDescricao();
+			if(cod.getCod().equals(value)){
+				retorno = cod.getDescription();
 				break;
 			}
 		}
 		return retorno;
 	}
 
-	public Integer getValue() {
-		return value;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setValue(Integer value) {
-		this.value = value;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
+	public Integer getCod() {
+		return cod;
+	}
 
-	public String getDescricao() {
-		return descricao;
+	public void setCod(Integer cod) {
+		this.cod = cod;
 	}
 }

@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/v1/customers")
+@RequestMapping("/api/v1/customers")
 public class ClientV1Controller extends BaseController {
 
 	public ClientService service;

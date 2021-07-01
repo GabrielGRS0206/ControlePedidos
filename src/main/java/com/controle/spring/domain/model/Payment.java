@@ -16,6 +16,18 @@ public enum Payment {
 		this.cod = cod;
 		this.description = descricao;
 	}
+	
+	public static String descriptionCod(Integer value){
+		String retorno = "";
+		for(Payment cod : Payment.values()){
+			if(cod.getCod().equals(value)){
+				retorno = cod.getDescription();
+				break;
+			}
+		}
+		return retorno;
+	}
+	
 	public Integer getCod() {
 		return cod;
 	}
@@ -23,5 +35,4 @@ public enum Payment {
 	public String getDescription() {
 		return description;
 	}
-
 }

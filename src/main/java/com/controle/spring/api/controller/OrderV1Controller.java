@@ -30,7 +30,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/v1/order_order")
+@RequestMapping("/api/v1/order")
 @Api("Comandas")
 public class OrderV1Controller extends BaseController{
 
