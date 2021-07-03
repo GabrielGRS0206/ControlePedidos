@@ -64,7 +64,7 @@ public class ClientV1Controller extends BaseController {
 		service.save(client);
 		ClientOutputV1Dto dto = converter.entityToDto(client);
 
-		return ok(dto);
+		return created(dto);
 	}
 
 	@GetMapping

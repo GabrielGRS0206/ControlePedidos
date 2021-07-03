@@ -63,7 +63,7 @@ public class ProductV1Controller extends BaseController{
 		service.save(product);
 		ProductOutputV1Dto dto = converter.entityToDto(product);
 
-		return ok(dto);
+		return created(dto);
 	}
 
 	@GetMapping

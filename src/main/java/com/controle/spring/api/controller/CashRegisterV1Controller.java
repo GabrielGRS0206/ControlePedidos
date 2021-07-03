@@ -42,7 +42,7 @@ public class CashRegisterV1Controller extends BaseController{
 		CashRegister cashRegister = (CashRegister) CashRegisterOpenInputV1Dto.dtoToEntity(input);
 		service.save(cashRegister);
 		
-		return ok("Caixa: "+cashRegister.getId());
+		return created("Caixa: "+cashRegister.getId());
 	}
 	
 	@PostMapping("/close/{id}")

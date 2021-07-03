@@ -60,7 +60,7 @@ public class OrderV1Controller extends BaseController{
 		OrderOutputV1Dto dto = converter.entityToDto(order);
 		dto.setItems(dto.listItemToDto(order.getItems()));
 
-		return ok(dto);
+		return created(dto);
 	}
 
 	@GetMapping

@@ -11,18 +11,13 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @Configuration
 public class DatabaseConfig {
 
-	public static String driver = "";
-	public static String url = "";
-	public static String user = "";
-	public static String password = "";
-
 	@Bean
 	public DataSource dataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(driver);
-		dataSource.setUrl(url);
-		dataSource.setUsername(user);
-		dataSource.setPassword(password);
+		dataSource.setDriverClassName(LoadProperties.getDriverClassName());
+		dataSource.setUrl(LoadProperties.getUrl());
+		dataSource.setUsername(LoadProperties.getUser());
+		dataSource.setPassword(LoadProperties.getPassword());
 		
 		try {
 			if(dataSource.getConnection() != null) {
