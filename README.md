@@ -6,7 +6,7 @@
 - REST
 - Swagger
 - Mysql
-- JDBC
+- JdbcTemplate
 
 O projeto consiste em uma API para controle de pedidos, desenvolvido totalmente com a tecnologia Java,
 utilizando as tecnologias acima mencionadas.
