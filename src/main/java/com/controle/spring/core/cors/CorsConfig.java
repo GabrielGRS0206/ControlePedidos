@@ -1,4 +1,4 @@
-package com.controle.spring.api.core.cors;
+package com.controle.spring.core.cors;
 
 import javax.servlet.Filter;
 
