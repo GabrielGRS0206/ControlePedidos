@@ -22,7 +22,7 @@ public class ClientOutputV1Dto {
 	
 	//=======GETTERS E SETTERS========
 	public String getDocument() {
-		return Mask.formataMascaraInteligente(document);
+		return Mask.formatMaskIntelligent(document);
 	}
 
 	public long getId() {
