@@ -2,8 +2,6 @@ package com.controle.spring.api.dto.input;
 
 import java.math.BigDecimal;
 
-import com.controle.spring.domain.utils.SpringUtils;
-
 public class OrderItemInputV1Dto {
 
 	private Long idProduct;
@@ -12,18 +10,6 @@ public class OrderItemInputV1Dto {
 	private BigDecimal price;
 	private BigDecimal additional;
 	private String observation;
-
-	public String resumoComandaItem() {
-		StringBuilder sb = new StringBuilder();
-
-		sb.append(idProduct+""
-				+ " "+description+" "
-				+ ""+SpringUtils.removeNull(observation)+""
-				+ " "+quantity.toString()+""
-				+ " R$"+price.add(SpringUtils.removeNull(additional)).toString()+" \n");
-
-		return sb.toString();
-	}
 
 	//=======GETTERS E SETTERS========
 	public Long getIdProduct() {

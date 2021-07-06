@@ -53,13 +53,13 @@ public class ClientService implements Services<Client> {
 
 	@Override
 	public Optional<Client> findById(long id) {
-		Optional<Client> cliente = repository.findById(id);
+		Optional<Client> client = repository.findById(id);
 
-		if(!cliente.isPresent()) {
+		if(!client.isPresent()) {
 			throw new ClientNotFoundException(id);
 		}
 
-		return cliente;
+		return client;
 	}
 
 	@Override

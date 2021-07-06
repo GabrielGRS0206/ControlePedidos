@@ -12,8 +12,8 @@ import com.controle.spring.domain.exception.notFound.OrderNotFoundException;
 import com.controle.spring.domain.model.CashRegister;
 import com.controle.spring.domain.model.Order;
 import com.controle.spring.domain.model.OrderItem;
-import com.controle.spring.domain.repository.OrderRepository;
 import com.controle.spring.domain.repository.OrderItemRepository;
+import com.controle.spring.domain.repository.OrderRepository;
 import com.controle.spring.domain.repository.ProductRepository;
 import com.controle.spring.domain.utils.SpringUtils;
 import com.controle.spring.domain.utils.interfaces.service.Services;
@@ -48,9 +48,9 @@ public class OrderService implements Services<Order>{
 				((Order) obj).getCashRegister().getId() == 0) {
 			throw new CashRegisterException("Deve ser informado um id de caixa");
 		} else {
-			
+
 			Optional<CashRegister> cashRegister = cashRegisterService.findById(((Order) obj).getCashRegister().getId());
-			
+
 			if(cashRegister.isPresent()) {
 				if(SpringUtils.valueDiffZero(cashRegister.get().getTotal_closure())) {
 					throw new CashRegisterException("Caixa com código "+cashRegister.get().getId()+" já está com valor de fechamento");
@@ -85,7 +85,7 @@ public class OrderService implements Services<Order>{
 
 	@Override
 	public Order update(Object obj) {
-		
+
 		Objects.requireNonNull(obj, "Objeto nao pode ser null");
 
 		//======VERIFICA SE CAIXA INFORMADO EXISTE E ESTÁ ABERTO======
@@ -93,9 +93,9 @@ public class OrderService implements Services<Order>{
 				((Order) obj).getCashRegister().getId() == 0) {
 			throw new CashRegisterException("Deve ser informado um id de caixa");
 		} else {
-			
+
 			Optional<CashRegister> cashRegister = cashRegisterService.findById(((Order) obj).getCashRegister().getId());
-			
+
 			if(cashRegister.isPresent()) {
 				if(SpringUtils.valueDiffZero(cashRegister.get().getTotal_closure())) {
 					throw new CashRegisterException("Caixa com código "+cashRegister.get().getId()+" já está com valor de fechamento");
@@ -118,7 +118,7 @@ public class OrderService implements Services<Order>{
 		order.setTotal(total);
 		items.forEach(e -> e.setId(null));
 		repository.save(order);
-		
+
 		items.forEach(e -> e.setOrder(order));
 
 		orderItemRepository.saveAll(items);
@@ -153,7 +153,7 @@ public class OrderService implements Services<Order>{
 	@Override
 	public boolean existsById(long codigo) {
 
-		if(!orderItemRepository.existsById(codigo)) {
+		if(!repository.existsById(codigo)) {
 			throw new OrderNotFoundException(codigo);
 		}
 

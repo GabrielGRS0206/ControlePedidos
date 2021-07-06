@@ -6,14 +6,14 @@ public enum TypeMascara {
 	CNPJ("##.###.###/####-##"),
 	CEP("#####-###");
 
-	private String mascara;
+	private String mask;
 
 	private TypeMascara(String mascara) {
-		this.mascara = mascara;
+		this.mask = mascara;
 	}
 
-	public String getMascara() {
-		return mascara;
+	public String getMask() {
+		return mask;
 	}
 
 }

@@ -8,7 +8,7 @@ import com.controle.spring.domain.utils.SpringUtils;
 public class OrderInputV1Dto {
 
 	private List<OrderItemInputV1Dto> items;
-	private Long idClient; //pode ser que não tenha,pode ser usado apenas o nome
+	private Long idClient; 
 	private String name;
 	private String contact;
 	private String street;
@@ -21,34 +21,6 @@ public class OrderInputV1Dto {
 	private Long cashRegisterId;
 	private Integer payment;
 	private String delivery;
-	
-	public String resumoOrder() {
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append(SpringUtils.replic("=", 40)+" \n");
-		
-		sb.append(" \n RESUMO DA COMANDA \n");
-		sb.append(" ID CLIENTE : "+idClient+" \n");
-		sb.append("       NOME : "+SpringUtils.removeNull(name)+" \n");
-		sb.append("    CELULAR : "+SpringUtils.removeNull(contact)+" \n");
-		sb.append("        RUA : "+SpringUtils.removeNull(street)+" \n");
-		sb.append("     BAIRRO : "+SpringUtils.removeNull(district)+" \n");
-		sb.append("COMPLEMENTO : "+SpringUtils.removeNull(complement)+" \n");
-		sb.append("PROXIMIDADE : "+SpringUtils.removeNull(proximity)+" \n");
-		sb.append(" OBSERVAÇÃO : "+SpringUtils.removeNull(observation)+" \n");
-		sb.append("    ENTREGA : "+orderToDelivery()+" \n");
-		
-		sb.append(SpringUtils.replic("-", 40)+" \n");
-		sb.append("LISTA DE ITEM \n ");
-		for(OrderItemInputV1Dto item : items) {
-			sb.append(item.resumoComandaItem()+" \n");
-		}
-		sb.append(SpringUtils.replic("-", 40)+" \n \n");
-		
-		sb.append(SpringUtils.replic("=", 40)+" \n");
-		
-		return sb.toString();
-	}
 
 	private String orderToDelivery() {
 		if(SpringUtils.removeNull(delivery).equals("S")) {
@@ -163,13 +135,13 @@ public class OrderInputV1Dto {
 	}
 
 	public String getDelivery() {
-		return delivery;
+		return orderToDelivery();
 	}
 
 	public void setDelivery(String delivery) {
 		this.delivery = delivery;
 	}
-	
-	
-	
+
+
+
 }

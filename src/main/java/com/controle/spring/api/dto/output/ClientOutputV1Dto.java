@@ -1,6 +1,6 @@
 package com.controle.spring.api.dto.output;
 
-import com.controle.spring.domain.utils.Mascara;
+import com.controle.spring.domain.utils.Mask;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -22,7 +22,7 @@ public class ClientOutputV1Dto {
 	
 	//=======GETTERS E SETTERS========
 	public String getDocument() {
-		return Mascara.formataMascaraInteligente(document);
+		return Mask.formataMascaraInteligente(document);
 	}
 
 	public long getId() {
