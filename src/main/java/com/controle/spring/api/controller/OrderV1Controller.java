@@ -31,7 +31,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/api/v1/order")
-@Api("Comandas")
+@Api("Pedidos")
 public class OrderV1Controller extends BaseController{
 
 	public OrderService service;
@@ -64,8 +64,8 @@ public class OrderV1Controller extends BaseController{
 	}
 
 	@GetMapping
-	@ApiOperation("Listar comandas em aberto ")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Comandas recuperadas com sucesso"),
+	@ApiOperation("Listar pedidos em aberto ")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Pedidos recuperados com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
@@ -75,7 +75,7 @@ public class OrderV1Controller extends BaseController{
 
 	@DeleteMapping("/{id}")
 	@ApiOperation("Cancelar pedido")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Pedido cancelada com sucesso"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Pedido cancelado com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recuro não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
@@ -108,7 +108,7 @@ public class OrderV1Controller extends BaseController{
 
 	@GetMapping("/{id}")
 	@ApiOperation("Consultar pedido por código")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Pedido recuperada com sucesso"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Pedido recuperado com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })

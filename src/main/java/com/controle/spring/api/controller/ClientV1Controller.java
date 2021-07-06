@@ -78,7 +78,7 @@ public class ClientV1Controller extends BaseController {
 	}
 
 	@GetMapping("/filter")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Clientes filtrados recuperadas com sucesso"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Clientes recuperados com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })

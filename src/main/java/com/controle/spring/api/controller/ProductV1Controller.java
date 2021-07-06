@@ -35,7 +35,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/api/v1/products")
-@Api("Mercadorias")
+@Api("Produtos")
 public class ProductV1Controller extends BaseController{
 
 	public ProductService service;
@@ -50,9 +50,9 @@ public class ProductV1Controller extends BaseController{
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	@ApiOperation("Adicionar mercadoria")
+	@ApiOperation("Adicionar produto")
 	@ApiResponses({
-		@ApiResponse(code = 201,message = "Mercadoria adicionada com sucesso"),
+		@ApiResponse(code = 201,message = "Produto adicionado com sucesso"),
 		@ApiResponse(code = 401, message = "Acesso não permitido"),
 		@ApiResponse(code = 404, message = "Recurso não encontrado"),
 		@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") 
@@ -67,8 +67,8 @@ public class ProductV1Controller extends BaseController{
 	}
 
 	@GetMapping
-	@ApiOperation("Listar mercadorias")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Mercadorias recuperadas com sucesso"),
+	@ApiOperation("Listar produtos")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Produtos recuperados com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
@@ -77,7 +77,7 @@ public class ProductV1Controller extends BaseController{
 	}
 
 	@GetMapping("/filter")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Mercadorias filtradas recuperadas com sucesso"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Produtos recuperados com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
@@ -92,9 +92,9 @@ public class ProductV1Controller extends BaseController{
 	}
 
 	@DeleteMapping("/{id}") 
-	@ApiOperation("Deletar mercadoria")
+	@ApiOperation("Deletar produto")
 	@ApiResponses({
-		@ApiResponse(code = 200, message = "Mercadoria excluida com sucesso"),
+		@ApiResponse(code = 200, message = "Produto excluido com sucesso"),
 		@ApiResponse(code = 204,message = "Não foi possível excluir"),
 		@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") 
 	})
@@ -103,10 +103,10 @@ public class ProductV1Controller extends BaseController{
 	}
 
 	@PutMapping("/{id}")
-	@ApiOperation("Alterar mercadoria")
+	@ApiOperation("Alterar produto")
 	@ApiResponses({
-		@ApiResponse(code = 200, message = "Mercadoria alterada com sucesso"),
-		@ApiResponse(code = 204,message = "Não foi possível alterar a mercadoria"),
+		@ApiResponse(code = 200, message = "Produto alterado com sucesso"),
+		@ApiResponse(code = 204,message = "Não foi possível alterar o produto"),
 		@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") 
 	})
 	public ResponseEntity<Object> update(@Valid @PathVariable Long id,
@@ -122,10 +122,10 @@ public class ProductV1Controller extends BaseController{
 
 
 	@GetMapping("/{id}")
-	@ApiOperation("Consultar mercadoria por código")
+	@ApiOperation("Consultar produto por código")
 	@ApiResponses({
-		@ApiResponse(code = 200, message = "Mercadoria recuperado com sucesso"),
-		@ApiResponse(code = 204,message = "Não foi possível encontrar a mercadoria"),
+		@ApiResponse(code = 200, message = "Produto recuperado com sucesso"),
+		@ApiResponse(code = 204,message = "Não foi possível encontrar o produto"),
 		@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") 
 	})
 	public ResponseEntity<Object> findById(@PathVariable Long id) {
