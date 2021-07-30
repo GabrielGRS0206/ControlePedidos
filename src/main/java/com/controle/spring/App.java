@@ -13,6 +13,6 @@ public class App {
 
 		System.out.println(SpringUtils.replic("-",25));
 		System.out.println(" SPRING BOOT.....");
-		System.out.println(SpringUtils.replic("-",25));
+		System.out.println(SpringUtils.replic("-",25)); 
 	}
 }

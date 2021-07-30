@@ -42,6 +42,13 @@ public class Product {
 		this.id = productId;
 	}
 
+	public Product(Long productId,String description,BigDecimal unitPrice) {
+		super();
+		this.id = productId;
+		this.description = description;
+		this.unitPrice = unitPrice;
+	}
+	
 	public Long getId() {
 		return id;
 	}

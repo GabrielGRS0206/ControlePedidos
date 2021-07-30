@@ -60,6 +60,14 @@ public class Client {
 	@Column(length = 12)
 	private String city;
 
+	public Client() {
+		super();
+	}
+
+	public Client(long id) {
+		this.id = id;
+	}
+
 	public Long getId() {
 		return id;
 	}

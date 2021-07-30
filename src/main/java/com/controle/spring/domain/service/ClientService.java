@@ -30,7 +30,7 @@ public class ClientService implements Services<Client> {
 	}
 
 	@Override
-	public Client save(Object obj) {
+	public Client save(Object obj) {// 16 primeiro
 		Objects.requireNonNull(obj, "Objeto nao pode ser null");
 		Optional<Client> client = repository.findByDocument(((Client) obj).getDocument());
 
