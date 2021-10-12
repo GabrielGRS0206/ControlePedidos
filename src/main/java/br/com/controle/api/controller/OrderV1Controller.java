@@ -35,10 +35,10 @@ import io.swagger.annotations.ApiResponses;
 public class OrderV1Controller extends BaseController {
 
 	@Autowired
-	public OrderService service;
+	private OrderService service;
 
 	@Autowired
-	public OrderV1Mapper mapper;
+	private OrderV1Mapper mapper;
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
@@ -59,8 +59,8 @@ public class OrderV1Controller extends BaseController {
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
-	public List<OrderResponseV1Dto> findAll(@RequestParam String tipo) {
-		return mapper.listToDto(service.openOrder(), tipo);
+	public List<OrderResponseV1Dto> findAllOpenOrders(@RequestParam String tipo) {
+		return mapper.listToDto(service.openOrders(), tipo);
 	}
 
 	@DeleteMapping("/{id}")

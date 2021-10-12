@@ -9,7 +9,7 @@ public interface OrderRepositoryQueries {
 	/**
 	Lista todas comandas em aberto
 	*/
-	List<Order> openOrder();
+	List<Order> openOrders();
 	
 	/**
 	Deleta itens por id comanda

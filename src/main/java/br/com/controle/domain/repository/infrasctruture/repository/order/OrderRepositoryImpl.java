@@ -15,7 +15,7 @@ public class OrderRepositoryImpl implements OrderRepositoryQueries {
 	public JdbcTemplate template;
 
 	@Override
-	public List<Order> openOrder() {
+	public List<Order> openOrders() {
 		List<Order> list = new ArrayList<>();
 
 		try {

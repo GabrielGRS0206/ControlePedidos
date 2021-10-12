@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiResponses;
 public class DailyClosingController extends BaseController {
 
 	@Autowired
-	public DailyClosingService service;
+	private DailyClosingService service;
 
 	@GetMapping("/total_cash_register/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
@@ -33,7 +33,7 @@ public class DailyClosingController extends BaseController {
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
-	public ResponseEntity<Object> totaisPorCaixa(@PathVariable Long id) {
+	public ResponseEntity<Object> totaisCashRegister(@PathVariable Long id) {
 
 		List<DailyClosing> list = service.list(id);
 

@@ -4,8 +4,10 @@
 package br.com.controle.domain.service;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
@@ -64,7 +66,7 @@ class OrderServiceTest {
 
 		Product product = new Product(1l);
 		product.setUnitPrice(BigDecimal.ONE);
-		
+
 		when(cashRegisterService.findById(1l)).thenReturn(Optional.of(new CashRegister(1l)));
 		when(orderItemRepository.saveAll(any())).thenReturn(items());
 		when(productRepository.findById(1l)).thenReturn(Optional.of(product));
@@ -75,7 +77,7 @@ class OrderServiceTest {
 		order.setItems(items());
 
 		Order entity = service.save(order);
-		
+
 		assertNotNull(entity);
 
 	}
@@ -85,12 +87,12 @@ class OrderServiceTest {
 		item.setPrice(BigDecimal.ONE);
 		item.setQuantity(BigDecimal.ONE);
 		item.setAdditional(BigDecimal.ZERO);
-		
+
 		Product product = new Product();
 		product.setId(1l);
 		product.setUnitPrice(BigDecimal.ONE);
 		item.setProduct(product);
-		
+
 		return Arrays.asList(item);
 	}
 
@@ -100,16 +102,23 @@ class OrderServiceTest {
 	 */
 	@Test
 	final void testUpdate() {
-		fail("Not yet implemented"); // TODO
-	}
+		Product product = new Product(1l);
+		product.setUnitPrice(BigDecimal.ONE);
 
-	/**
-	 * Test method for
-	 * {@link br.com.controle.domain.service.OrderService#delete(long)}.
-	 */
-	@Test
-	final void testDelete() {
-		fail("Not yet implemented"); // TODO
+		when(cashRegisterService.findById(1l)).thenReturn(Optional.of(new CashRegister(1l)));
+		when(orderItemRepository.saveAll(any())).thenReturn(items());
+		when(productRepository.findById(1l)).thenReturn(Optional.of(product));
+		// ==================
+
+		Order order = new Order();
+		order.setIdOrder(1l);
+		order.setCashRegisterId(1l);
+		order.setItems(items());
+
+		Order entity = service.update(order);
+
+		assertNotNull(entity);
+		
 	}
 
 	/**
@@ -118,7 +127,12 @@ class OrderServiceTest {
 	 */
 	@Test
 	final void testFindById() {
-		fail("Not yet implemented"); // TODO
+		Order order = new Order();
+		when(repository.findById(1l)).thenReturn(Optional.of(order));
+		Optional<Order> entity = service.findById(1l);
+
+		assertNotNull(entity.get());
+		verify(repository, times(1)).findById(1l);
 	}
 
 	/**
@@ -127,7 +141,10 @@ class OrderServiceTest {
 	 */
 	@Test
 	final void testFindAll() {
-		fail("Not yet implemented"); // TODO
+		when(repository.findAll()).thenReturn(Arrays.asList(new Order()));
+		List<Order> list = service.findAll();
+		assertNotNull(list);
+		assertEquals(list.size(), 1);
 	}
 
 	/**
@@ -136,7 +153,10 @@ class OrderServiceTest {
 	 */
 	@Test
 	final void testExistsById() {
-		fail("Not yet implemented"); // TODO
+		when(repository.existsById(1l)).thenReturn(true);
+		boolean exists = service.existsById(1l);
+		assertEquals(exists, true);
+		verify(repository, times(1)).existsById(1l);
 	}
 
 	/**
@@ -145,7 +165,10 @@ class OrderServiceTest {
 	 */
 	@Test
 	final void testOpenOrder() {
-		fail("Not yet implemented"); // TODO
+		when(repository.openOrders()).thenReturn(Arrays.asList(new Order()));
+		List<Order> list = service.openOrders();
+		assertEquals(list.size(), 1);
+		verify(repository, times(1)).openOrders();
 	}
 
 	/**
@@ -154,7 +177,10 @@ class OrderServiceTest {
 	 */
 	@Test
 	final void testCancel() {
-		fail("Not yet implemented"); // TODO
+		when(repository.existsById(1l)).thenReturn(true);
+		when(repository.cancelOrder(1l)).thenReturn(true);
+		boolean cancel = service.cancel(1l);
+		assertEquals(cancel, true);
 	}
 
 }

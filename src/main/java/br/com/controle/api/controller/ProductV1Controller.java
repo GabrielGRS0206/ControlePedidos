@@ -72,7 +72,7 @@ public class ProductV1Controller extends BaseController {
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
-	public Page<ProductResponseV1Dto> searcg(ProductDescriptionSpecification filter, Pageable pageable) {
+	public Page<ProductResponseV1Dto> search(ProductDescriptionSpecification filter, Pageable pageable) {
 		Page<Product> list = service.search(filter, pageable);
 		return new PageImpl<>(list.getContent().stream().map(x -> mapper.toDto(x)).collect(Collectors.toList()),
 				list.getPageable(), list.getTotalElements());

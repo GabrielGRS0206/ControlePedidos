@@ -74,7 +74,7 @@ public class ClientV1Controller extends BaseController {
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
-	public Page<ClientResponseV1Dto> cliente(ClientNameSpecification filter, Pageable pageable) {
+	public Page<ClientResponseV1Dto> search(ClientNameSpecification filter, Pageable pageable) {
 
 		Page<Client> list = service.search(filter, pageable);
 		return new PageImpl<>(list.getContent().stream().map(x -> mapper.toDto(x)).collect(Collectors.toList()),
@@ -121,7 +121,7 @@ public class ClientV1Controller extends BaseController {
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
-	public ResponseEntity<Object> findByCpfOrCnpj(@PathVariable String document) {
+	public ResponseEntity<Object> findByDocument(@PathVariable String document) {
 		Optional<Client> entity = service.findByDocument(document);
 		return ok(mapper.toDto(entity.get()));
 	}

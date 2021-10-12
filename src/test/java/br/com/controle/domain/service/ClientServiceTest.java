@@ -7,6 +7,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -73,7 +74,7 @@ class ClientServiceTest {
 		
 		Client entity = new Client();
 		when(repository.save(any())).thenReturn(Optional.of(entity));
-		Client client = service.update(any());
+		Client client = service.update(mock(Client.class));
 		assertNotNull(client);
 		verify(repository,times(1)).save(any());
 	}

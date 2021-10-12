@@ -71,7 +71,7 @@ public class OrderService implements Services<Order> {
 
 		orderItemRepository.saveAll(items);
 
-		items.forEach(e -> e.setProduct(productRepository.findById(e.getProductId()).get()));
+		items.forEach(e -> e.setProduct(productRepository.findById(e.getProduct().getId()).get()));
 		porder.setItems(items);
 
 		return porder;
@@ -116,7 +116,7 @@ public class OrderService implements Services<Order> {
 
 		orderItemRepository.saveAll(items);
 
-		items.forEach(e -> e.setProduct(productRepository.findById(e.getProductId()).get()));
+		items.forEach(e -> e.setProduct(productRepository.findById(e.getProduct().getId()).get()));
 		order.setItems(items);
 
 		return order;
@@ -150,8 +150,8 @@ public class OrderService implements Services<Order> {
 		return true;
 	}
 
-	public List<Order> openOrder() {
-		return repository.openOrder();
+	public List<Order> openOrders() {
+		return repository.openOrders();
 	}
 
 	public boolean cancel(Long id) {
