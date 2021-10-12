@@ -9,15 +9,16 @@
 - Mysql
 - JdbcTemplate
 
+Para testes unitários:
+- JUnit
+- Mockito
+
 O projeto consiste em uma API para controle de pedidos, desenvolvido totalmente com a tecnologia Java,
 utilizando as tecnologias acima mencionadas.
 
 O projeto possui cadastro de:
 ##### - Mercadoria (Products)
 ##### - Cliente (Customers)
-##### - Rua (Street)
-##### - Bairro (District)
-##### - Cidade (City)
 
 Para a parte de movimentação da API temos
 ##### - Pedido (Order)
@@ -25,7 +26,7 @@ Para a parte de movimentação da API temos
 
 ## Configurando o projeto
 
-1) git clone ou download do zip: https://github.com/GabrielGRS0206/ControlePedidos
+1) git clone ou download do zip: https://github.com/GabrielGRS0206/controle-pedidos
 
 2) Importe o projeto em sua IDE de preferência
 
