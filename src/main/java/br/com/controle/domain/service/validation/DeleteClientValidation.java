@@ -5,13 +5,15 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
+import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.exception.business.EntityInUseException;
-import br.com.controle.domain.exception.not_found.ClientNotFoundException;
+import br.com.controle.domain.exception.business.MessageException;
 import br.com.controle.domain.repository.ClientRepository;
 
 @Component
 public class DeleteClientValidation implements Validation {
 
+	private static final String CLIENT_IN_USE = "Cliente de código %d não pode ser removido, pois está em uso";
 	@Autowired
 	public ClientRepository clienteRepository;
 
@@ -20,10 +22,10 @@ public class DeleteClientValidation implements Validation {
 		try {
 			clienteRepository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ClientNotFoundException(id);
+			throw new BusinessException(MessageException.MSG_CLIENTE_NAO_ENCONTRADO.getValue(), id);
 		} catch (DataIntegrityViolationException e) {
 			throw new EntityInUseException(
-					String.format("Cliente de código %d não pode ser removido, pois está em uso", id));
+					String.format(CLIENT_IN_USE, id));
 		}
 	}
 

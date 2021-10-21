@@ -5,13 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.controle.domain.exception.not_found.CashRegisterException;
+import br.com.controle.domain.exception.business.BusinessException;
+import br.com.controle.domain.exception.business.MessageException;
 import br.com.controle.domain.movement.DailyClosing;
 import br.com.controle.domain.repository.infrasctruture.repository.daily_closing.DailyClosingImpl;
 
 @Service
 public class DailyClosingService {
 
+	
 	@Autowired
 	private DailyClosingImpl repository;
 
@@ -20,7 +22,7 @@ public class DailyClosingService {
 
 	public List<DailyClosing> list(long id) {
 		if (!service.existsById(id)) {
-			throw new CashRegisterException(id);
+			throw new BusinessException(MessageException.MSG_CAIXA_NAO_ENCONTRADO.getValue(), id);
 		}
 		return repository.totalCashRegister(id);
 	}

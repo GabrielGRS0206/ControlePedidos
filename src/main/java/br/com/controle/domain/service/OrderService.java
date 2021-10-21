@@ -8,8 +8,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.controle.domain.exception.not_found.CashRegisterException;
-import br.com.controle.domain.exception.not_found.OrderNotFoundException;
+import br.com.controle.domain.exception.business.BusinessException;
+import br.com.controle.domain.exception.business.MessageException;
 import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.model.Order;
 import br.com.controle.domain.model.OrderItem;
@@ -37,21 +37,23 @@ public class OrderService implements Services<Order> {
 
 	@Override
 	public Order save(Object obj) {
-		Objects.requireNonNull(obj, "Objeto nao pode ser null");
+		Objects.requireNonNull(obj, MessageException.OBJECT_NOT_NULL.getValue());
 
 		if (((Order) obj).getCashRegister() == null || ((Order) obj).getCashRegister().getId() == 0) {
-			throw new CashRegisterException("Deve ser informado um id de caixa");
+			throw new BusinessException(MessageException.MSG_CAIXA_NAO_ENCONTRADO.getValue(),
+					((Order) obj).getCashRegister().getId());
 		} else {
 
 			Optional<CashRegister> cashRegister = cashRegisterService.findById(((Order) obj).getCashRegister().getId());
 
 			if (cashRegister.isPresent()) {
 				if (SpringUtils.valueDiffZero(cashRegister.get().getTotalClosure())) {
-					throw new CashRegisterException(
-							"Caixa com código " + cashRegister.get().getId() + " já está com valor de fechamento");
+					throw new BusinessException(MessageException.MSG_CASH_REGISTER_CLOSE.getValue(),
+							cashRegister.get().getId());
 				}
 			} else {
-				throw new CashRegisterException(((Order) obj).getCashRegister().getId());
+				throw new BusinessException(MessageException.MSG_CAIXA_NAO_ENCONTRADO.getValue(),
+						((Order) obj).getCashRegister().getId());
 			}
 		}
 
@@ -81,21 +83,22 @@ public class OrderService implements Services<Order> {
 	@Override
 	public Order update(Object obj) {
 
-		Objects.requireNonNull(obj, "Objeto nao pode ser null");
+		Objects.requireNonNull(obj, MessageException.OBJECT_NOT_NULL.getValue());
 
 		if (((Order) obj).getCashRegister() == null || ((Order) obj).getCashRegister().getId() == 0) {
-			throw new CashRegisterException("Deve ser informado um id de caixa");
+			throw new BusinessException(MessageException.MSG_INFORME_CASH_REGISTER.getValue());
 		} else {
 
 			Optional<CashRegister> cashRegister = cashRegisterService.findById(((Order) obj).getCashRegister().getId());
 
 			if (cashRegister.isPresent()) {
 				if (SpringUtils.valueDiffZero(cashRegister.get().getTotalClosure())) {
-					throw new CashRegisterException(
-							"Caixa com código " + cashRegister.get().getId() + " já está com valor de fechamento");
+					throw new BusinessException(MessageException.MSG_CASH_REGISTER_CLOSE.getValue(),
+							cashRegister.get().getId());
 				}
 			} else {
-				throw new CashRegisterException(((Order) obj).getCashRegister().getId());
+				throw new BusinessException(MessageException.MSG_CAIXA_NAO_ENCONTRADO.getValue(),
+						((Order) obj).getCashRegister().getId());
 			}
 		}
 
@@ -132,7 +135,7 @@ public class OrderService implements Services<Order> {
 		Optional<Order> order = repository.findById(id);
 
 		if (!order.isPresent()) {
-			throw new OrderNotFoundException(id);
+			throw new BusinessException(MessageException.MSG_COMANDA_NAO_ENCONTRADA.getValue(), id);
 		}
 
 		return order;
@@ -146,7 +149,7 @@ public class OrderService implements Services<Order> {
 	@Override
 	public boolean existsById(long id) {
 		if (!repository.existsById(id)) {
-			throw new OrderNotFoundException(id);
+			throw new BusinessException(MessageException.MSG_COMANDA_NAO_ENCONTRADA.getValue(), id);
 		}
 		return true;
 	}

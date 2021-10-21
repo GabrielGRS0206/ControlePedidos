@@ -16,8 +16,7 @@ import org.springframework.http.ResponseEntity;
 
 import br.com.controle.domain.movement.DailyClosing;
 import br.com.controle.domain.service.DailyClosingService;
-
-public class DailyClosingControllerTest {
+class DailyClosingControllerTest {
 
 	@Mock
 	private DailyClosingService service;

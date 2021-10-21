@@ -9,7 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.controle.domain.exception.not_found.ProductNotFoundException;
+import br.com.controle.domain.exception.business.BusinessException;
+import br.com.controle.domain.exception.business.MessageException;
 import br.com.controle.domain.model.Product;
 import br.com.controle.domain.repository.ProductRepository;
 import br.com.controle.domain.service.validation.DeleteProductValidation;
@@ -46,7 +47,7 @@ public class ProductService implements Services<Product> {
 		Optional<Product> product = repository.findById(id);
 
 		if (!product.isPresent()) {
-			throw new ProductNotFoundException(id);
+			throw new BusinessException(MessageException.MSG_PRODUCT_NOT_FOUND.getValue(), id);
 		}
 
 		return product;

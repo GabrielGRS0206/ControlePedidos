@@ -1,4 +1,4 @@
-package br.com.controle.core.config.cors;
+package br.com.controle.api.config.cors;
 
 import javax.servlet.Filter;
 

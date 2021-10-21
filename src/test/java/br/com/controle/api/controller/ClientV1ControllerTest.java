@@ -24,7 +24,7 @@ import br.com.controle.domain.model.Client;
 import br.com.controle.domain.service.ClientService;
 import br.com.controle.domain.utils.Utils;
 
-public class ClientV1ControllerTest {
+class ClientV1ControllerTest {
 
 	@InjectMocks
 	private ClientV1Controller controller;

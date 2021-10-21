@@ -5,7 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.controle.domain.exception.not_found.CashRegisterException;
+import br.com.controle.domain.exception.business.BusinessException;
+import br.com.controle.domain.exception.business.MessageException;
 import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.repository.CashRegisterRepository;
 import br.com.controle.domain.utils.SpringUtils;
@@ -31,8 +32,8 @@ public class CashRegisterService {
 	}
 
 	public Optional<CashRegister> findById(long id) {
-		if(!existsById(id)) {
-			throw new CashRegisterException(id);
+		if (!existsById(id)) {
+			throw new BusinessException(MessageException.MSG_CAIXA_NAO_ENCONTRADO.getValue(), id);
 		}
 		return repository.findById(id);
 	}

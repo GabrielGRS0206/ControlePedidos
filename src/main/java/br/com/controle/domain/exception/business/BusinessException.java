@@ -11,9 +11,13 @@ public class BusinessException extends RuntimeException {
 	public BusinessException(String message) {
 		super(message);
 	}
-	
+
 	public BusinessException(String mensagem, Throwable causa) {
 		super(mensagem, causa);
 	}
-	
+
+	public BusinessException(String msg, Long id) {
+		this(String.format(msg, id));
+	}
+
 }

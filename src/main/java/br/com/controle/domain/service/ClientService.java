@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.controle.domain.exception.business.BusinessException;
-import br.com.controle.domain.exception.not_found.ClientNotFoundException;
+import br.com.controle.domain.exception.business.MessageException;
 import br.com.controle.domain.model.Client;
 import br.com.controle.domain.repository.ClientRepository;
 import br.com.controle.domain.service.validation.DeleteClientValidation;
@@ -28,7 +28,7 @@ public class ClientService implements Services<Client> {
 
 	@Override
 	public Client save(Object obj) {
-		Objects.requireNonNull(obj, "Objeto nao pode ser null");
+		Objects.requireNonNull(obj, MessageException.OBJECT_NOT_NULL.getValue());
 		Optional<Client> object = repository.findByDocument(((Client) obj).getDocument());
 
 		if (object.isPresent()) {
@@ -53,7 +53,7 @@ public class ClientService implements Services<Client> {
 		Optional<Client> entity = repository.findById(id);
 
 		if (!entity.isPresent()) {
-			throw new ClientNotFoundException(id);
+			throw new BusinessException(MessageException.MSG_CLIENTE_NAO_ENCONTRADO.getValue(), id);
 		}
 
 		return entity;
@@ -73,7 +73,7 @@ public class ClientService implements Services<Client> {
 		Optional<Client> entity = repository.findByDocument(document);
 
 		if (!entity.isPresent()) {
-			throw new ClientNotFoundException("Cliente com CPF/CNPJ " + document + " não encontrado");
+			throw new BusinessException("Cliente com CPF/CNPJ " + document + " não encontrado");
 		}
 
 		return entity;

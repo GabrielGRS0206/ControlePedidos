@@ -1,4 +1,4 @@
-package br.com.controle.core.config.swagger;
+package br.com.controle.api.config.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
