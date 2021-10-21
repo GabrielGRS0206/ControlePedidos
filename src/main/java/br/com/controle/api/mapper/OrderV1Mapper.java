@@ -27,7 +27,7 @@ public class OrderV1Mapper extends ValidConstrains<Order> {
 		response.setCity(order.getCity());
 		response.setComplement(order.getComplement());
 		response.setDelivery(order.getDelivery());
-		response.setIdClient(order.getClient().getId());
+		response.setIdClient(order.getClient() != null ? order.getClient().getId() : 0);
 		response.setName(order.getNameClient());
 		response.setObservation(order.getObservation());
 		response.setProximity(order.getProximity());

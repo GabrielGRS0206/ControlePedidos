@@ -57,7 +57,7 @@ public class OrderV1ControllerTest {
 		List<Order> list = Arrays.asList(new Order());
 		when(service.findAll()).thenReturn(list);
 		when(mapper.listToDto(list, OrderV1Mapper.COMPLETE)).thenReturn(Arrays.asList(new OrderResponseV1Dto()));
-		List<OrderResponseV1Dto> response = controller.findAllOpenOrders(OrderV1Mapper.COMPLETE);
+		List<OrderResponseV1Dto> response = controller.findAllOpenOrders(1l);
 		assertNotNull(response);
 		verify(service, times(1)).openOrders();
 	}

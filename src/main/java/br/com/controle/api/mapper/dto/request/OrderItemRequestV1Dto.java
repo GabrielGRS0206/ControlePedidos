@@ -6,7 +6,7 @@ import br.com.controle.domain.model.OrderItem;
 
 public class OrderItemRequestV1Dto {
 
-	private Long productId;
+	private Long id;
 	private BigDecimal quantity;
 	private BigDecimal price;
 	private BigDecimal additional;
@@ -14,20 +14,24 @@ public class OrderItemRequestV1Dto {
 
 	public static OrderItem dtoToEntity(OrderItemRequestV1Dto item) {
 		var entity = new OrderItem();
-		entity.setProductId(item.getProductId());
+		entity.setProductId(item.getId());
+		entity.getProduct().setUnitPrice(item.getPrice());
 		entity.setObservation(item.getObservation());
 		entity.setQuantity(item.getQuantity());
 		entity.setPrice(entity.getProduct().getUnitPrice());
 		return entity;
 	}
 
-	public Long getProductId() {
-		return productId;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
+
 
 	public BigDecimal getQuantity() {
 		return quantity;

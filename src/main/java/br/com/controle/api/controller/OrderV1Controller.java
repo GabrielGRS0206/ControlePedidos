@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,14 +52,15 @@ public class OrderV1Controller extends BaseController {
 		return created(mapper.entityToDto(entity, OrderV1Mapper.COMPLETE));
 	}
 
-	@GetMapping("/{tipo}")
+	@GetMapping("/type/{tipo}")
 	@ApiOperation("Listar pedidos em aberto ")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Pedidos recuperados com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
-	public List<OrderResponseV1Dto> findAllOpenOrders(@RequestParam String tipo) {
-		return mapper.listToDto(service.openOrders(), tipo);
+	public List<OrderResponseV1Dto> findAllOpenOrders(@PathVariable Long tipo) {
+		String type = tipo.equals(1) ?  OrderV1Mapper.COMPLETE : OrderV1Mapper.SUMMARY;
+		return mapper.listToDto(service.openOrders(), type);
 	}
 
 	@DeleteMapping("/{id}")
@@ -71,7 +71,7 @@ public class OrderV1Controller extends BaseController {
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
 	public ResponseEntity<Object> cancel(@PathVariable Long id) {
 		if (service.cancel(id)) {
-			return ResponseEntity.ok().body("Pedido cancelada com sucesso");
+			return ResponseEntity.ok().body("Pedido cancelado com sucesso");
 		}
 		return notFound();
 	}

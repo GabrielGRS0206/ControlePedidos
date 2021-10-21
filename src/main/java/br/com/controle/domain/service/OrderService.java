@@ -13,6 +13,7 @@ import br.com.controle.domain.exception.not_found.OrderNotFoundException;
 import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.model.Order;
 import br.com.controle.domain.model.OrderItem;
+import br.com.controle.domain.model.StatusOrder;
 import br.com.controle.domain.repository.OrderItemRepository;
 import br.com.controle.domain.repository.OrderRepository;
 import br.com.controle.domain.repository.ProductRepository;
@@ -62,19 +63,19 @@ public class OrderService implements Services<Order> {
 			total = total.add(item.totalItem());
 		}
 
-		Order porder = (Order) obj;
-		porder.setTotal(total);
-		repository.save(porder);
+		Order order = (Order) obj;
+		order.setStatus(StatusOrder.ABERTA);
+		order.setTotal(total);
+		repository.save(order);
 
-		items.forEach(e -> e.setId(null));
-		items.forEach(e -> e.setOrder(porder));
+//		items.forEach(e -> e.setId(null));
+		items.forEach(e -> e.setOrder(order));
 
 		orderItemRepository.saveAll(items);
-
 		items.forEach(e -> e.setProduct(productRepository.findById(e.getProduct().getId()).get()));
-		porder.setItems(items);
+		order.setItems(items);
 
-		return porder;
+		return order;
 	}
 
 	@Override
