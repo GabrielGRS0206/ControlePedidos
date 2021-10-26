@@ -3,6 +3,10 @@ HELP.md
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+/.classpath
+/*.project
+/.settings
+/*.springBeans
 
 ### STS ###
 .apt_generated
