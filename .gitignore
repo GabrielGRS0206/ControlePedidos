@@ -5,3 +5,6 @@
 .classpath
 .project
 .factorypath
+.apt_generated
+.springBeans
+.sts4-cache

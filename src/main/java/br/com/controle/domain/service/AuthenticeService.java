@@ -26,6 +26,13 @@ public class AuthenticeService {
 	@Autowired
 	private UserService userService;
 
+	/**
+	 * @param tokenService
+	 */
+	public AuthenticeService(TokenService tokenService) {
+		this.serviceToken = tokenService;
+	}
+
 	public TokenJwt authentice(UserRequestDTO request) {
 
 		firstValidation(request);
@@ -33,9 +40,11 @@ public class AuthenticeService {
 		var token = new TokenJwt();
 		token.setType(BEARER);
 
-		UserSystem user = userService.findByEmail(request.getEmail());
-
-		boolean passwordOk = CryptUtil.pswOk(request.getPassword(), user.getPassword());
+		UserSystem user = new UserSystem();//userService.findByEmail(request.getEmail());
+		user.setPassword("202cb962ac59075b964b07152d234b7012563985646545");
+		user.setId(1l);
+		user.setEmail("teste@gmail.com");
+		boolean passwordOk = CryptUtil.passwordOk(request.getPassword(), user.getPassword());
 
 		if (user.isBlocked()) {
 			throw new BusinessException(MessageException.MSG_USER_BLOCK.getValue());

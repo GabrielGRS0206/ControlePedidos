@@ -21,10 +21,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/home_com_token").hasAnyRole("ADMIN", "USER")
 				.antMatchers(HttpMethod.GET, "/home_sem_token").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/health").permitAll()
+				.antMatchers(HttpMethod.POST, "/v1/authentice/login").permitAll()
 				.anyRequest().authenticated().and().csrf()
 				.disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.addFilterBefore(new TokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-		;
 	}
 
 	// Configuration for authorization

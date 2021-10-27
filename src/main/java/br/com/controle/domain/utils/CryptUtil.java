@@ -8,11 +8,16 @@ public class CryptUtil {
 
 	private static final String SECRET = "12563985646545";
 
-	public static boolean pswOk(String password, String passwordDb) {
-		if(hash(password).equals(passwordDb)) {
+	public static boolean passwordOk(String password, String passwordDb) {
+		if (hash(password).equals(passwordDb)) {
 			return true;
 		}
 		return false;
+	}
+
+	public static void main(String[] args) {
+
+		System.out.println(hash("123"));
 	}
 
 	public static String hash(String value) {
