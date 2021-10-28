@@ -13,29 +13,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import br.com.controle.domain.model.UserSystem;
-import br.com.controle.domain.service.TokenService;
-import br.com.controle.domain.service.UserService;
 import io.jsonwebtoken.Jwts;
 
 @Component
 public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
 	static final String SECRET = "MySecret";
-
-	private final UserService userService;
-
-	private final TokenService tokenService;
-
-	public TokenAuthenticationFilter(TokenService tokenService, UserService userService) {
-		this.tokenService = tokenService;
-		this.userService = userService;
-	}
-
-	public TokenAuthenticationFilter() {
-		super();
-		this.tokenService = new TokenService();
-		this.userService = new UserService();
-	}
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -59,7 +42,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 	}
 
 	private void authenticate(String tokenFromHeader) {
-		String email = tokenService.getTokenId(tokenFromHeader);
+//		String email = tokenService.getTokenId(tokenFromHeader);
 
 		UserSystem user = mock();// userService.findByEmail(email);
 

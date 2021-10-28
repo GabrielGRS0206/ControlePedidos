@@ -1,16 +1,15 @@
-package br.com.controle.domain.service;
+package br.com.controle.api.config.security;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-
-@Service
-public class TokenService {
+@Component
+public class TokenUtils {
 
 	public static final String KEY = "SECRETS";
 	private static final long EXPIRATION_TIME = 36000000;

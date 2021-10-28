@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.controle.api.config.security.TokenUtils;
 import br.com.controle.api.mapper.dto.request.UserRequestDTO;
 import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.exception.business.MessageException;
@@ -21,7 +22,7 @@ public class AuthenticeService {
 	private static final Integer MAX_ERROR = 3;
 
 	@Autowired
-	private TokenService serviceToken;
+	private TokenUtils serviceToken;
 
 	@Autowired
 	private UserService userService;
@@ -29,7 +30,7 @@ public class AuthenticeService {
 	/**
 	 * @param tokenService
 	 */
-	public AuthenticeService(TokenService tokenService) {
+	public AuthenticeService(TokenUtils tokenService) {
 		this.serviceToken = tokenService;
 	}
 
@@ -40,10 +41,10 @@ public class AuthenticeService {
 		var token = new TokenJwt();
 		token.setType(BEARER);
 
-		UserSystem user = new UserSystem();//userService.findByEmail(request.getEmail());
-		user.setPassword("202cb962ac59075b964b07152d234b7012563985646545");
-		user.setId(1l);
-		user.setEmail("teste@gmail.com");
+//		UserSystem user = new UserSystem();//userService.findByEmail(request.getEmail());
+
+		UserSystem user = mockUser();
+
 		boolean passwordOk = CryptUtil.passwordOk(request.getPassword(), user.getPassword());
 
 		if (user.isBlocked()) {
@@ -61,6 +62,17 @@ public class AuthenticeService {
 			throw new BusinessException(MessageException.MSG_USUARIO_INVALIDO.getValue());
 		}
 		return token;
+	}
+
+	/**
+	 * @return
+	 */
+	private UserSystem mockUser() {
+		UserSystem user = new UserSystem();
+		user.setPassword("202cb962ac59075b964b07152d234b7012563985646545");
+		user.setId(1l);
+		user.setEmail("teste@gmail.com");
+		return user;
 	}
 
 	private void blockedUser(UserSystem user) {
