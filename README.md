@@ -26,7 +26,7 @@ Para a parte de movimentação da API temos
 
 ## Configurando o projeto
 
-1) git clone ou download do zip: https://github.com/GabrielGRS0206/controle-pedidos
+1) git clone ou download do zip: https://github.com/GabrielGRS0206/portifolio-backend-spring-boot
 
 2) Importe o projeto em sua IDE de preferência
 
@@ -35,9 +35,9 @@ Para a parte de movimentação da API temos
   * Altere as propriedades informado o usuário e senha do seu banco de dados: 
     - spring.datasource.username=usuario
     - spring.datasource.password=senha
-    - spring.datasource.url = jdbc:mariadb://localhost:3306/seuBancoDeDados?useSSL=false
+    - spring.datasource.url = jdbc:mysql://localhost:3306/seuBancoDeDados?useSSL=false
 4) Na classe App de um run na sua IDE.
-5) Acesse: http://localhost:8080/swagger-ui.html para visualizar os endpoints
+5) Acesse: http://localhost:8090/api/app-order/swagger-ui.html para visualizar os endpoints
 
 
 

@@ -32,7 +32,7 @@ public class ClientService implements Services<Client> {
 		Optional<Client> object = repository.findByDocument(((Client) obj).getDocument());
 
 		if (object.isPresent()) {
-			throw new BusinessException("Cliente já cadastrado,código :" + object.get().getId());
+			throw new BusinessException(MessageException.CLIENT_REGISTERED.getValue(), +object.get().getId());
 		}
 
 		return repository.save((Client) obj);
@@ -53,7 +53,7 @@ public class ClientService implements Services<Client> {
 		Optional<Client> entity = repository.findById(id);
 
 		if (!entity.isPresent()) {
-			throw new BusinessException(MessageException.MSG_CLIENTE_NAO_ENCONTRADO.getValue(), id);
+			throw new BusinessException(MessageException.CLIENT_ID_NOT_FOUND.getValue(), id);
 		}
 
 		return entity;
@@ -73,7 +73,8 @@ public class ClientService implements Services<Client> {
 		Optional<Client> entity = repository.findByDocument(document);
 
 		if (!entity.isPresent()) {
-			throw new BusinessException("Cliente com CPF/CNPJ " + document + " não encontrado");
+			throw new BusinessException(MessageException.CLIENT_DOCUMENT_NOT_FOUND.getValue(),
+					Long.parseLong(document));
 		}
 
 		return entity;

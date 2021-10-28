@@ -33,7 +33,7 @@ public class CashRegisterService {
 
 	public Optional<CashRegister> findById(long id) {
 		if (!existsById(id)) {
-			throw new BusinessException(MessageException.MSG_CAIXA_NAO_ENCONTRADO.getValue(), id);
+			throw new BusinessException(MessageException.CASH_REGISTER_NOT_FOUND.getValue(), id);
 		}
 		return repository.findById(id);
 	}

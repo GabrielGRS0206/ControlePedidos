@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.controle.api.config.security.TokenUtils;
+import br.com.controle.api.config.security.JwtTokenUtil;
 import br.com.controle.api.mapper.dto.request.UserRequestDTO;
 import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.exception.business.MessageException;
@@ -22,7 +22,7 @@ public class AuthenticeService {
 	private static final Integer MAX_ERROR = 3;
 
 	@Autowired
-	private TokenUtils serviceToken;
+	private JwtTokenUtil serviceToken;
 
 	@Autowired
 	private UserService userService;
@@ -30,7 +30,7 @@ public class AuthenticeService {
 	/**
 	 * @param tokenService
 	 */
-	public AuthenticeService(TokenUtils tokenService) {
+	public AuthenticeService(JwtTokenUtil tokenService) {
 		this.serviceToken = tokenService;
 	}
 
@@ -48,7 +48,7 @@ public class AuthenticeService {
 		boolean passwordOk = CryptUtil.passwordOk(request.getPassword(), user.getPassword());
 
 		if (user.isBlocked()) {
-			throw new BusinessException(MessageException.MSG_USER_BLOCK.getValue());
+			throw new BusinessException(MessageException.USER_BLOCK.getValue());
 		}
 
 		if (passwordOk) {
@@ -59,7 +59,7 @@ public class AuthenticeService {
 			if (maxErrorPassword(user)) {
 				blockedUser(user);
 			}
-			throw new BusinessException(MessageException.MSG_USUARIO_INVALIDO.getValue());
+			throw new BusinessException(MessageException.INVALID_USER.getValue());
 		}
 		return token;
 	}
@@ -82,7 +82,7 @@ public class AuthenticeService {
 
 	private void firstValidation(UserRequestDTO request) {
 		if (request.getEmail().equals("") || !request.getEmail().contains("@") || request.getPassword().equals("")) {
-			throw new BusinessException(MessageException.MSG_IMCOMPLET.getValue());
+			throw new BusinessException(MessageException.DATA_IMCOMPLET.getValue());
 		}
 	}
 
@@ -97,13 +97,13 @@ public class AuthenticeService {
 
 			// Verifica se o token está expirado
 			if (claims.getExpiration().before(new Date(System.currentTimeMillis()))) {
-				throw new BusinessException(MessageException.MSG_TOKEN_EXPIRADO.getValue());
+				throw new BusinessException(MessageException.TOKEN_EXPIRED.getValue());
 			}
 			return true;
 		} catch (BusinessException et) {
-			throw new BusinessException(MessageException.MSG_TOKEN_EXPIRADO.getValue());
+			throw new BusinessException(MessageException.TOKEN_EXPIRED.getValue());
 		} catch (Exception e) {
-			throw new BusinessException(MessageException.MSG_TOKEN_INVALIDO.getValue());
+			throw new BusinessException(MessageException.TOKEN_INVALID.getValue());
 		}
 	}
 }

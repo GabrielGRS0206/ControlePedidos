@@ -40,7 +40,7 @@ public class OrderService implements Services<Order> {
 		Objects.requireNonNull(obj, MessageException.OBJECT_NOT_NULL.getValue());
 
 		if (((Order) obj).getCashRegister() == null || ((Order) obj).getCashRegister().getId() == 0) {
-			throw new BusinessException(MessageException.MSG_CAIXA_NAO_ENCONTRADO.getValue(),
+			throw new BusinessException(MessageException.CASH_REGISTER_NOT_FOUND.getValue(),
 					((Order) obj).getCashRegister().getId());
 		} else {
 
@@ -48,11 +48,11 @@ public class OrderService implements Services<Order> {
 
 			if (cashRegister.isPresent()) {
 				if (SpringUtils.valueDiffZero(cashRegister.get().getTotalClosure())) {
-					throw new BusinessException(MessageException.MSG_CASH_REGISTER_CLOSE.getValue(),
+					throw new BusinessException(MessageException.CASH_REGISTER_CLOSE.getValue(),
 							cashRegister.get().getId());
 				}
 			} else {
-				throw new BusinessException(MessageException.MSG_CAIXA_NAO_ENCONTRADO.getValue(),
+				throw new BusinessException(MessageException.CASH_REGISTER_NOT_FOUND.getValue(),
 						((Order) obj).getCashRegister().getId());
 			}
 		}
@@ -86,18 +86,18 @@ public class OrderService implements Services<Order> {
 		Objects.requireNonNull(obj, MessageException.OBJECT_NOT_NULL.getValue());
 
 		if (((Order) obj).getCashRegister() == null || ((Order) obj).getCashRegister().getId() == 0) {
-			throw new BusinessException(MessageException.MSG_INFORME_CASH_REGISTER.getValue());
+			throw new BusinessException(MessageException.REPORT_CASH_REGISTER.getValue());
 		} else {
 
 			Optional<CashRegister> cashRegister = cashRegisterService.findById(((Order) obj).getCashRegister().getId());
 
 			if (cashRegister.isPresent()) {
 				if (SpringUtils.valueDiffZero(cashRegister.get().getTotalClosure())) {
-					throw new BusinessException(MessageException.MSG_CASH_REGISTER_CLOSE.getValue(),
+					throw new BusinessException(MessageException.CASH_REGISTER_CLOSE.getValue(),
 							cashRegister.get().getId());
 				}
 			} else {
-				throw new BusinessException(MessageException.MSG_CAIXA_NAO_ENCONTRADO.getValue(),
+				throw new BusinessException(MessageException.CASH_REGISTER_NOT_FOUND.getValue(),
 						((Order) obj).getCashRegister().getId());
 			}
 		}
@@ -135,7 +135,7 @@ public class OrderService implements Services<Order> {
 		Optional<Order> order = repository.findById(id);
 
 		if (!order.isPresent()) {
-			throw new BusinessException(MessageException.MSG_COMANDA_NAO_ENCONTRADA.getValue(), id);
+			throw new BusinessException(MessageException.ORDER_NOT_FOUND.getValue(), id);
 		}
 
 		return order;
@@ -149,7 +149,7 @@ public class OrderService implements Services<Order> {
 	@Override
 	public boolean existsById(long id) {
 		if (!repository.existsById(id)) {
-			throw new BusinessException(MessageException.MSG_COMANDA_NAO_ENCONTRADA.getValue(), id);
+			throw new BusinessException(MessageException.ORDER_NOT_FOUND.getValue(), id);
 		}
 		return true;
 	}

@@ -1,4 +1,4 @@
-package br.com.controle.domain.exception.exception_handler;
+package br.com.controle.domain.exception.exceptionHandler;
 
 import java.time.LocalDateTime;
 import java.util.List;

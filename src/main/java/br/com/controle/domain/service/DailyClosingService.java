@@ -13,7 +13,6 @@ import br.com.controle.domain.repository.infrasctruture.repository.daily_closing
 @Service
 public class DailyClosingService {
 
-	
 	@Autowired
 	private DailyClosingImpl repository;
 
@@ -22,7 +21,7 @@ public class DailyClosingService {
 
 	public List<DailyClosing> list(long id) {
 		if (!service.existsById(id)) {
-			throw new BusinessException(MessageException.MSG_CAIXA_NAO_ENCONTRADO.getValue(), id);
+			throw new BusinessException(MessageException.CASH_REGISTER_NOT_FOUND.getValue(), id);
 		}
 		return repository.totalCashRegister(id);
 	}

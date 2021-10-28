@@ -22,7 +22,7 @@ public class DeleteClientValidation implements Validation {
 		try {
 			clienteRepository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new BusinessException(MessageException.MSG_CLIENTE_NAO_ENCONTRADO.getValue(), id);
+			throw new BusinessException(MessageException.CLIENT_ID_NOT_FOUND.getValue(), id);
 		} catch (DataIntegrityViolationException e) {
 			throw new EntityInUseException(
 					String.format(CLIENT_IN_USE, id));

@@ -23,7 +23,7 @@ public class DeleteProductValidation implements Validation {
 		try {
 			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new BusinessException(MessageException.MSG_PRODUCT_NOT_FOUND.getValue(), id);
+			throw new BusinessException(MessageException.PRODUCT_ID_NOT_FOUND.getValue(), id);
 		} catch (DataIntegrityViolationException e) {
 			throw new EntityInUseException(String.format(PRODUCT_IN_USE, id));
 		}

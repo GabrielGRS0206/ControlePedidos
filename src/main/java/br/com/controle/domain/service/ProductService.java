@@ -28,7 +28,7 @@ public class ProductService implements Services<Product> {
 
 	@Override
 	public Product save(Object obj) {
-		Objects.requireNonNull(obj, "Objeto nao pode ser null");
+		Objects.requireNonNull(obj, MessageException.OBJECT_NOT_NULL.getValue());
 		return repository.save((Product) obj);
 	}
 
@@ -47,7 +47,7 @@ public class ProductService implements Services<Product> {
 		Optional<Product> product = repository.findById(id);
 
 		if (!product.isPresent()) {
-			throw new BusinessException(MessageException.MSG_PRODUCT_NOT_FOUND.getValue(), id);
+			throw new BusinessException(MessageException.PRODUCT_ID_NOT_FOUND.getValue(), id);
 		}
 
 		return product;

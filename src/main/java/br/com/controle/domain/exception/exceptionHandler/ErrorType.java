@@ -1,4 +1,4 @@
-package br.com.controle.domain.exception.exception_handler;
+package br.com.controle.domain.exception.exceptionHandler;
 
 public enum ErrorType {
 

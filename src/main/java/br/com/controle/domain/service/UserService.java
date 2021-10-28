@@ -34,7 +34,7 @@ public class UserService implements UserDetailsService {
 	public UserSystem findByEmail(String email) {
 		UserSystem user = repository.findByEmail(email);
 		if (user == null) {
-			throw new BusinessException(MessageException.MSG_USUARIO_INVALIDO.getValue());
+			throw new BusinessException(MessageException.INVALID_USER.getValue());
 		}
 		return user;
 	}

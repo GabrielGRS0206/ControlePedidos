@@ -1,4 +1,4 @@
-package br.com.controle.domain.exception.exception_handler;
+package br.com.controle.domain.exception.exceptionHandler;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ import br.com.controle.domain.exception.business.EntityNotFoundException;
 import br.com.controle.domain.utils.SpringUtils;
 
 @ControllerAdvice
-public class SpringExceptionHandler extends ResponseEntityExceptionHandler {
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 	private static final String INVALID = "Campos inválidos";
 	private static final String RESOURCE_NOT_FOUND = "Recurso não encontrado";
