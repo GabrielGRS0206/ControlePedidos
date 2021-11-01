@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import br.com.controle.domain.utils.SpringUtils;
+import br.com.controle.domain.utils.Utils;
 
 @Entity
 @Table(name = "order_item")
@@ -111,6 +111,6 @@ public class OrderItem {
 	}
 
 	public BigDecimal totalItem() {
-		return price.add(SpringUtils.removeNull(additional)).multiply(quantity);
+		return price.add(Utils.removeNull(additional)).multiply(quantity);
 	}
 }

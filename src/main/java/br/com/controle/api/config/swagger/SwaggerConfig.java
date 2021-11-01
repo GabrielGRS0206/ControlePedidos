@@ -34,7 +34,7 @@ public class SwaggerConfig {
 	}
 
 	public Contact getContact() {
-		return new Contact("Gabriel Rocha Severino", "https://github.com/GabrielGRS0206/ControlePedidos", "gabrielrocha0206@gmail.com");
+		return new Contact("Gabriel Rocha Severino", "https://github.com/GabrielGRS0206/portifolio-backend-spring-boot", "gabrielrocha0206@gmail.com");
 	}
 
 }

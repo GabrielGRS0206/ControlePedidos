@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.controle.domain.model.Product;
 import br.com.controle.domain.specification.ProductDescriptionSpecification;
-import br.com.controle.domain.utils.SpringUtils;
+import br.com.controle.domain.utils.Utils;
 
 @Repository
 public class ProductRepositoryImpl implements ProductRepositoryQueries{
@@ -44,7 +44,7 @@ public class ProductRepositoryImpl implements ProductRepositoryQueries{
 	public Predicate[] getPredicates(ProductDescriptionSpecification filter,Root<Product> root, CriteriaBuilder builder) {
 		List<Predicate> predicates = new ArrayList<>();
 
-		if (SpringUtils.isEmpty(filter.getDescription())) {
+		if (Utils.isEmpty(filter.getDescription())) {
 			predicates.add(builder.like(root.get(ProductDescriptionSpecification.DESCRIPTION), "%" + filter.getDescription().toLowerCase() + "%"));
 		}
 		

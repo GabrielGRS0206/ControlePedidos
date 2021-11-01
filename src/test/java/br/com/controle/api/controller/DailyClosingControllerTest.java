@@ -1,6 +1,6 @@
 package br.com.controle.api.controller;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 
 import br.com.controle.domain.movement.DailyClosing;
 import br.com.controle.domain.service.DailyClosingService;
+
 class DailyClosingControllerTest {
 
 	@Mock

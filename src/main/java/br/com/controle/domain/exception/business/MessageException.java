@@ -14,7 +14,8 @@ public enum MessageException {
 	PRODUCT_ID_NOT_FOUND("Produto com código %d não encontrado"),
 	CASH_REGISTER_CLOSE("CashRegister com código %d já está com valor de fechamento"),
 	USER_BLOCK("Usuário bloqueado"), OBJECT_NOT_NULL("Objeto não pode ser null"),
-	REPORT_CASH_REGISTER("Deve ser informado um id de caixa");
+	REPORT_CASH_REGISTER("Deve ser informado um id de caixa"),
+	ERROR_DAILY_CLOSING("Erro ao consultar dados");
 
 	private String value;
 

@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.controle.api.mapper.dto.request.UserRequestDTO;
-import br.com.controle.api.mapper.dto.response.UserAuthenticeResponseDTO;
-import br.com.controle.domain.model.TokenJwt;
+import br.com.controle.api.mapper.dto.request.UserRequestV1DTO;
+import br.com.controle.api.mapper.dto.response.UserAuthenticeResponseV1DTO;
+import br.com.controle.domain.model.JwtToken;
 import br.com.controle.domain.service.AuthenticeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -36,8 +36,8 @@ public class AuthenticeController extends BaseController {
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
-	public ResponseEntity<Object> token(@RequestBody UserRequestDTO reqeuest) {
-		TokenJwt user = authentice.authentice(reqeuest);
-		return ok(new UserAuthenticeResponseDTO(user));
+	public ResponseEntity<Object> token(@RequestBody UserRequestV1DTO reqeuest) {
+		JwtToken user = authentice.authentice(reqeuest);
+		return ok(new UserAuthenticeResponseV1DTO(user));
 	}
 }

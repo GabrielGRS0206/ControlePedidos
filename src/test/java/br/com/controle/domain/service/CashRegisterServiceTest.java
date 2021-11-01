@@ -3,8 +3,8 @@
  */
 package br.com.controle.domain.service;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -16,11 +16,9 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.repository.CashRegisterRepository;
@@ -28,7 +26,7 @@ import br.com.controle.domain.repository.CashRegisterRepository;
 /**
  * @author Gabriel Rocha
  */
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 class CashRegisterServiceTest {
 
 	@Mock

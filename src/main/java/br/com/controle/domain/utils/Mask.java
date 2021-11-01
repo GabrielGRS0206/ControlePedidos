@@ -27,7 +27,7 @@ public class Mask {
 
 	public static String formatMaskIntelligent(String value) {
 
-		if(!SpringUtils.isEmpty(value)) {
+		if(!Utils.isEmpty(value)) {
 
 			int tamanho = value.replaceAll("[^0-9]","").trim().length();
 
@@ -43,6 +43,6 @@ public class Mask {
 
 		}
 
-		return SpringUtils.removeNull(value);
+		return Utils.removeNull(value);
 	}
 }

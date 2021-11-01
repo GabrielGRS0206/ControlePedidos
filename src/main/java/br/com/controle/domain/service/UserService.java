@@ -32,7 +32,7 @@ public class UserService implements UserDetailsService {
 	}
 
 	public UserSystem findByEmail(String email) {
-		UserSystem user = repository.findByEmail(email);
+		UserSystem user = repository.findByEmail(email).orElse(null);
 		if (user == null) {
 			throw new BusinessException(MessageException.INVALID_USER.getValue());
 		}

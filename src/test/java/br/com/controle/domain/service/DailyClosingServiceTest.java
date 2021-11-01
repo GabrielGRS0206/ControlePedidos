@@ -17,7 +17,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import br.com.controle.domain.movement.DailyClosing;
-import br.com.controle.domain.repository.infrasctruture.repository.daily_closing.DailyClosingImpl;
+import br.com.controle.domain.repository.infrasctruture.repository.dailyClosing.DailyClosingImpl;
 
 /**
  * @author Gabriel Rocha Severino

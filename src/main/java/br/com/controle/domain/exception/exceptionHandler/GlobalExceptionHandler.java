@@ -24,7 +24,7 @@ import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.exception.business.DtoInvalidException;
 import br.com.controle.domain.exception.business.EntityInUseException;
 import br.com.controle.domain.exception.business.EntityNotFoundException;
-import br.com.controle.domain.utils.SpringUtils;
+import br.com.controle.domain.utils.Utils;
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
@@ -118,7 +118,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 		Erro erro = null;
 
-		if (!SpringUtils.isEmpty(messageError)) {
+		if (!Utils.isEmpty(messageError)) {
 			erro = new Erro(status.value(), LocalDateTime.now(), detail, null);
 		} else {
 			erro = new Erro(status.value(), LocalDateTime.now(), detail, messageError, null);

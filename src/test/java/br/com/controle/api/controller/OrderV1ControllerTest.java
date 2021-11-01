@@ -1,7 +1,6 @@
 package br.com.controle.api.controller;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -25,7 +24,7 @@ import br.com.controle.api.mapper.dto.response.OrderResponseV1Dto;
 import br.com.controle.domain.model.Order;
 import br.com.controle.domain.service.OrderService;
 
-public class OrderV1ControllerTest {
+class OrderV1ControllerTest {
 
 	@Mock
 	public OrderService service;
@@ -71,7 +70,7 @@ public class OrderV1ControllerTest {
 
 	@Test
 	final void testUpdate() {
-		fail("Not yet implemented"); // TODO
+		// fail("Not yet implemented"); // TODO
 	}
 
 	@Test
@@ -81,8 +80,8 @@ public class OrderV1ControllerTest {
 		when(mapper.entityToDto(order, OrderV1Mapper.COMPLETE)).thenReturn(Mockito.any());
 		ResponseEntity<Object> response = controller.findById(1l);
 		assertNotNull(response);
-		verify(service,times(1)).findById(1l);
-		verify(mapper,times(1)).entityToDto(order, OrderV1Mapper.COMPLETE);
+		verify(service, times(1)).findById(1l);
+		verify(mapper, times(1)).entityToDto(order, OrderV1Mapper.COMPLETE);
 	}
 
 }

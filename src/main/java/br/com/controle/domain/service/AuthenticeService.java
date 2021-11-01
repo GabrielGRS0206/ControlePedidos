@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.controle.api.config.security.JwtTokenUtil;
-import br.com.controle.api.mapper.dto.request.UserRequestDTO;
+import br.com.controle.api.mapper.dto.request.UserRequestV1DTO;
 import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.exception.business.MessageException;
-import br.com.controle.domain.model.TokenJwt;
+import br.com.controle.domain.model.JwtToken;
 import br.com.controle.domain.model.UserSystem;
 import br.com.controle.domain.utils.CryptUtil;
 import io.jsonwebtoken.Claims;
@@ -34,11 +34,11 @@ public class AuthenticeService {
 		this.serviceToken = tokenService;
 	}
 
-	public TokenJwt authentice(UserRequestDTO request) {
+	public JwtToken authentice(UserRequestV1DTO request) {
 
 		firstValidation(request);
 
-		var token = new TokenJwt();
+		var token = new JwtToken();
 		token.setType(BEARER);
 
 //		UserSystem user = new UserSystem();//userService.findByEmail(request.getEmail());
@@ -80,7 +80,7 @@ public class AuthenticeService {
 		userService.update(user);
 	}
 
-	private void firstValidation(UserRequestDTO request) {
+	private void firstValidation(UserRequestV1DTO request) {
 		if (request.getEmail().equals("") || !request.getEmail().contains("@") || request.getPassword().equals("")) {
 			throw new BusinessException(MessageException.DATA_IMCOMPLET.getValue());
 		}

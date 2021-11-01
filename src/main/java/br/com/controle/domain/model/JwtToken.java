@@ -1,6 +1,6 @@
 package br.com.controle.domain.model;
 
-public class TokenJwt {
+public class JwtToken {
 
 	private String token;
 	private String type;

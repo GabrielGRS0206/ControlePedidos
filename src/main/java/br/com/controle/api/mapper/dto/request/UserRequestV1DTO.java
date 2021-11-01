@@ -1,15 +1,15 @@
 package br.com.controle.api.mapper.dto.request;
 
-public class UserRequestDTO {
+public class UserRequestV1DTO {
 
 	private String email;
 	private String password;
 
-	public UserRequestDTO() {
+	public UserRequestV1DTO() {
 		super();
 	}
 
-	public UserRequestDTO(String email, String password) {
+	public UserRequestV1DTO(String email, String password) {
 		this.email = email;
 		this.password = password;
 	}

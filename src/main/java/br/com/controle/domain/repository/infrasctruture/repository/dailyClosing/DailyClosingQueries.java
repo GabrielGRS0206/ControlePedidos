@@ -1,4 +1,4 @@
-package br.com.controle.domain.repository.infrasctruture.repository.daily_closing;
+package br.com.controle.domain.repository.infrasctruture.repository.dailyClosing;
 
 import java.util.List;
 

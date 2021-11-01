@@ -17,7 +17,7 @@ import br.com.controle.domain.model.StatusOrder;
 import br.com.controle.domain.repository.OrderItemRepository;
 import br.com.controle.domain.repository.OrderRepository;
 import br.com.controle.domain.repository.ProductRepository;
-import br.com.controle.domain.utils.SpringUtils;
+import br.com.controle.domain.utils.Utils;
 import br.com.controle.domain.utils.interfaces.service.Services;
 
 @Service
@@ -47,7 +47,7 @@ public class OrderService implements Services<Order> {
 			Optional<CashRegister> cashRegister = cashRegisterService.findById(((Order) obj).getCashRegister().getId());
 
 			if (cashRegister.isPresent()) {
-				if (SpringUtils.valueDiffZero(cashRegister.get().getTotalClosure())) {
+				if (Utils.valueDiffZero(cashRegister.get().getTotalClosure())) {
 					throw new BusinessException(MessageException.CASH_REGISTER_CLOSE.getValue(),
 							cashRegister.get().getId());
 				}
@@ -66,7 +66,7 @@ public class OrderService implements Services<Order> {
 		}
 
 		Order order = (Order) obj;
-		order.setStatus(StatusOrder.ABERTA);
+		order.setStatus(StatusOrder.OPEN);
 		order.setTotal(total);
 		repository.save(order);
 
@@ -92,7 +92,7 @@ public class OrderService implements Services<Order> {
 			Optional<CashRegister> cashRegister = cashRegisterService.findById(((Order) obj).getCashRegister().getId());
 
 			if (cashRegister.isPresent()) {
-				if (SpringUtils.valueDiffZero(cashRegister.get().getTotalClosure())) {
+				if (Utils.valueDiffZero(cashRegister.get().getTotalClosure())) {
 					throw new BusinessException(MessageException.CASH_REGISTER_CLOSE.getValue(),
 							cashRegister.get().getId());
 				}

@@ -1,4 +1,5 @@
 /target/
+/bin/
 /HELP.md
 .settings
 .idea/

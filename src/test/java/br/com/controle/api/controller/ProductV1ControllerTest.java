@@ -1,6 +1,6 @@
 package br.com.controle.api.controller;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -23,7 +23,7 @@ import br.com.controle.api.mapper.dto.response.ProductResponseV1Dto;
 import br.com.controle.domain.model.Product;
 import br.com.controle.domain.service.ProductService;
 
-public class ProductV1ControllerTest {
+class ProductV1ControllerTest {
 
 	@Mock
 	public ProductService service;

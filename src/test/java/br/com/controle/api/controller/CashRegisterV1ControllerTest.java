@@ -1,6 +1,7 @@
 package br.com.controle.api.controller;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
@@ -19,7 +20,7 @@ import br.com.controle.api.mapper.dto.request.CashRegisterOpenRequestV1Dto;
 import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.service.CashRegisterService;
 
-public class CashRegisterV1ControllerTest {
+class CashRegisterV1ControllerTest {
 
 	@Mock
 	private CashRegisterService service;
@@ -47,7 +48,7 @@ public class CashRegisterV1ControllerTest {
 		when(service.save(Mockito.any())).thenReturn(new CashRegister(1l));
 		CashRegisterClosureRequestV1Dto request = new CashRegisterClosureRequestV1Dto();
 		request.setTotal(BigDecimal.ONE);
-		ResponseEntity<Object> reponse = controller.update(request,1l);
+		ResponseEntity<Object> reponse = controller.update(request, 1l);
 		assertNotNull(reponse);
 	}
 

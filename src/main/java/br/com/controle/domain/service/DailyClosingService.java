@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.exception.business.MessageException;
 import br.com.controle.domain.movement.DailyClosing;
-import br.com.controle.domain.repository.infrasctruture.repository.daily_closing.DailyClosingImpl;
+import br.com.controle.domain.repository.infrasctruture.repository.dailyClosing.DailyClosingImpl;
 
 @Service
 public class DailyClosingService {

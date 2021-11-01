@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import br.com.controle.domain.model.StatusOrder;
-import br.com.controle.domain.utils.SpringUtils;
+import br.com.controle.domain.utils.Utils;
 
 @JsonInclude(Include.NON_NULL)
 public class OrderResponseV1Dto {
@@ -46,7 +46,7 @@ public class OrderResponseV1Dto {
 	}
 
 	private String delivery() {
-		if (SpringUtils.removeNull(delivery).equals("S")) {
+		if (Utils.removeNull(delivery).equals("S")) {
 			return "S";
 		}
 		return "N";

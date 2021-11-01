@@ -9,7 +9,7 @@ import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.exception.business.MessageException;
 import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.repository.CashRegisterRepository;
-import br.com.controle.domain.utils.SpringUtils;
+import br.com.controle.domain.utils.Utils;
 
 @Service
 public class CashRegisterService {
@@ -46,7 +46,7 @@ public class CashRegisterService {
 		Optional<CashRegister> entity = findById(id);
 
 		if (entity.isPresent()) {
-			if (SpringUtils.valueDiffZero(entity.get().getTotalClosure())) {
+			if (Utils.valueDiffZero(entity.get().getTotalClosure())) {
 				return true;
 			}
 		}

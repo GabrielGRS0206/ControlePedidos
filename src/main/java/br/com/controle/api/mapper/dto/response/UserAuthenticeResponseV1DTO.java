@@ -1,12 +1,12 @@
 package br.com.controle.api.mapper.dto.response;
 
-import br.com.controle.domain.model.TokenJwt;
+import br.com.controle.domain.model.JwtToken;
 
-public class UserAuthenticeResponseDTO {
+public class UserAuthenticeResponseV1DTO {
 	private String token;
 	private String type;
 
-	public UserAuthenticeResponseDTO(TokenJwt user) {
+	public UserAuthenticeResponseV1DTO(JwtToken user) {
 		this.token = user.getToken();
 		this.type = user.getType();
 	}

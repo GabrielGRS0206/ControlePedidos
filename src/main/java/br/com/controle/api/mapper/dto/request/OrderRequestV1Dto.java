@@ -3,7 +3,7 @@ package br.com.controle.api.mapper.dto.request;
 import java.util.List;
 
 import br.com.controle.domain.model.StatusOrder;
-import br.com.controle.domain.utils.SpringUtils;
+import br.com.controle.domain.utils.Utils;
 
 public class OrderRequestV1Dto {
 
@@ -23,7 +23,7 @@ public class OrderRequestV1Dto {
 	private String delivery;
 
 	private String orderToDelivery() {
-		if(SpringUtils.removeNull(delivery).equals("S")) {
+		if(Utils.removeNull(delivery).equals("S")) {
 			return "S";
 		} 
 		return "N";

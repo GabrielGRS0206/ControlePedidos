@@ -43,11 +43,6 @@ public class JwtTokenUtil {
 		return body.getSubject();
 	}
 
-	/**
-	 * @param token
-	 * @return
-	 */
-
 	public boolean validate(String token) {
 		try {
 			Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);

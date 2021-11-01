@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.controle.domain.model.Client;
 import br.com.controle.domain.specification.ClientNameSpecification;
-import br.com.controle.domain.utils.SpringUtils;
+import br.com.controle.domain.utils.Utils;
 
 @Repository
 public class ClientRepositoryImpl implements ClientRepositoryQueries{
@@ -48,7 +48,7 @@ public class ClientRepositoryImpl implements ClientRepositoryQueries{
 		List<Predicate> predicates = new ArrayList<>();
 
 
-		if (SpringUtils.isEmpty(filter.getName())) {
+		if (Utils.isEmpty(filter.getName())) {
 			predicates.add(builder.like(root.get(ClientNameSpecification.NAME), "%" + filter.getName().toLowerCase() + "%"));
 		}
 
