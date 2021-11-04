@@ -8,8 +8,8 @@ public class Role implements GrantedAuthority {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static final String USER = "USER";
-    public static final String ADMIN = "ADMIN";
+	public static final String USER = "ROLE_USER";
+    public static final String ADMIN = "ROLE_ADMIN";
 
     private String authority;
 

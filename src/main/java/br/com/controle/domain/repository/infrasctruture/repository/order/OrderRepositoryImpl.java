@@ -53,13 +53,15 @@ public class OrderRepositoryImpl implements OrderRepositoryQueries {
 	}
 
 	@Override
-	public void deleteItens(long id) {
+	public boolean deleteItens(long id) {
 		try {
 			String sql = " delete from order_item where id_order = " + id;
 			template.execute(sql);
+			return true;
 		} catch (Exception e) {
 			LOGGER.error("Erro ao deletar order", e.getCause(), e.getMessage());
 		}
+		return false;
 	}
 
 }

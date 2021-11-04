@@ -10,6 +10,7 @@ import br.com.controle.api.mapper.dto.request.OrderItemRequestV1Dto;
 import br.com.controle.api.mapper.dto.request.OrderRequestV1Dto;
 import br.com.controle.api.mapper.dto.response.OrderItemResponseV1Dto;
 import br.com.controle.api.mapper.dto.response.OrderResponseV1Dto;
+import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.model.Client;
 import br.com.controle.domain.model.Order;
 import br.com.controle.domain.model.OrderItem;
@@ -27,7 +28,7 @@ public class OrderV1Mapper extends ValidConstrains<Order> {
 		response.setCity(order.getCity());
 		response.setComplement(order.getComplement());
 		response.setDelivery(order.getDelivery());
-		response.setIdClient(order.getClient() != null ? order.getClient().getId() : 0);
+		response.setClientId(order.getClient() != null ? order.getClient().getId() : 0);
 		response.setName(order.getNameClient());
 		response.setObservation(order.getObservation());
 		response.setProximity(order.getProximity());
@@ -47,6 +48,7 @@ public class OrderV1Mapper extends ValidConstrains<Order> {
 	public Order dtoToEntity(OrderRequestV1Dto request) {
 		var entity = new Order();
 		entity.setCashRegisterId(request.getCashRegisterId());
+		entity.setCashRegister(new CashRegister(request.getCashRegisterId()));
 		entity.setCity(request.getCity());
 		entity.setNameClient(request.getNameClient());
 		entity.setComplement(request.getComplement());

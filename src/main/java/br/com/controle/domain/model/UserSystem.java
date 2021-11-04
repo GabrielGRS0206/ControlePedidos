@@ -6,10 +6,9 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.logging.log4j.util.Strings;
@@ -39,8 +38,8 @@ public class UserSystem implements UserDetails {
 	private String blocked;
 
 	private Integer passwordError;
-
-	@ManyToMany(fetch = FetchType.EAGER)
+	
+	@OneToMany(mappedBy="user") 
 	private List<Permission> permission;
 
 	public Long getId() {

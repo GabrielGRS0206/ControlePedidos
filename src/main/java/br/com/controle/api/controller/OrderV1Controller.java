@@ -24,6 +24,7 @@ import br.com.controle.api.mapper.OrderV1Mapper;
 import br.com.controle.api.mapper.dto.request.OrderRequestV1Dto;
 import br.com.controle.api.mapper.dto.response.OrderResponseV1Dto;
 import br.com.controle.domain.model.Order;
+import br.com.controle.domain.model.StatusOrder;
 import br.com.controle.domain.service.OrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -52,6 +53,7 @@ public class OrderV1Controller extends BaseController {
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
 	public ResponseEntity<Object> save(@Valid @RequestBody OrderRequestV1Dto request) {
 		Order entity = mapper.dtoToEntity(request);
+		entity.setStatus(StatusOrder.OPEN);
 		service.save(entity);
 		return created(mapper.entityToDto(entity, OrderV1Mapper.COMPLETE));
 	}

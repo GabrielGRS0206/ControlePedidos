@@ -42,8 +42,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(BusinessException.class)
 	public ResponseEntity<Object> handleUncaught(Exception ex, WebRequest request) {
-		HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-		ErrorType problemType = ErrorType.ERRO_DE_SISTEMA;
+		HttpStatus status = HttpStatus.NOT_FOUND;
+		ErrorType problemType = ErrorType.ERRO_NEGOCIO;
 		String detail = ExceptionUtils.getMessage(ex);
 
 		Erro problem = problem(status, problemType, detail);

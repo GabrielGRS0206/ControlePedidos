@@ -14,7 +14,7 @@ public class OrderResponseV1Dto {
 
 	private Long id;
 	private List<OrderItemResponseV1Dto> items;
-	private Long idClient;
+	private Long clientId;
 	private String name;
 	private String contact;
 	private String street;
@@ -60,12 +60,13 @@ public class OrderResponseV1Dto {
 		this.items = items;
 	}
 
-	public Long getIdClient() {
-		return idClient;
+
+	public Long getClientId() {
+		return clientId;
 	}
 
-	public void setIdClient(Long idClient) {
-		this.idClient = idClient;
+	public void setClientId(Long clientId) {
+		this.clientId = clientId;
 	}
 
 	public String getName() {

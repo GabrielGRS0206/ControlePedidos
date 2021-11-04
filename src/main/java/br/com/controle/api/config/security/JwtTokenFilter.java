@@ -7,13 +7,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import br.com.controle.domain.model.UserSystem;
+import br.com.controle.domain.service.UserService;
 import io.jsonwebtoken.Jwts;
 
 @Component
@@ -21,11 +23,11 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
 	static final String SECRET = "MySecret";
 
-	private final JwtTokenUtil jwtTokenUtil;
-	
-	public JwtTokenFilter() {
-		this.jwtTokenUtil = new JwtTokenUtil();
-	}
+	@Autowired
+	private JwtTokenUtil jwtTokenUtil;
+
+	@Autowired
+	private UserService userService;
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -44,9 +46,9 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 		}
 
 		// -------------------------------------
-//		String email = tokenService.getTokenId(tokenFromHeader);
+		String email = jwtTokenUtil.getTokenId(token);
 
-		UserSystem user = mock();// userService.findByEmail(email);
+		UserDetails user = userService.loadUserByUsername(email);
 
 		if (user != null) {
 			UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
@@ -67,13 +69,5 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 		} catch (Exception e) {
 			return false;
 		}
-	}
-
-	private UserSystem mock() {
-		UserSystem user = new UserSystem();
-		user.setEmail("teste@gmail.com");
-		user.setId(1l);
-		user.setPassword("202cb962ac59075b964b07152d234b7012563985646545");
-		return user;
 	}
 }

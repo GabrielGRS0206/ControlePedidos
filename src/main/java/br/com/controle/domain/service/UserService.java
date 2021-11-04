@@ -9,7 +9,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import br.com.controle.domain.exception.business.BusinessException;
@@ -31,14 +30,6 @@ public class UserService implements UserDetailsService {
 		repository.save(user);
 	}
 
-	public UserSystem findByEmail(String email) {
-		UserSystem user = repository.findByEmail(email).orElse(null);
-		if (user == null) {
-			throw new BusinessException(MessageException.INVALID_USER.getValue());
-		}
-		return user;
-	}
-
 	public Collection<? extends GrantedAuthority> authorities(UserSystem user) {
 		Collection<GrantedAuthority> auths = new ArrayList<>();
 
@@ -47,13 +38,16 @@ public class UserService implements UserDetailsService {
 		for (Permission role : lista) {
 			auths.add(new SimpleGrantedAuthority("ROLE_" + role.getNome()));
 		}
-
 		return auths;
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public UserDetails loadUserByUsername(String username) {
+		UserSystem user = repository.findByEmail(username).orElse(null);
+		if (user == null) {
+			throw new BusinessException(MessageException.INVALID_USER.getValue());
+		}
+		authorities(user);
+		return user;
 	}
 }

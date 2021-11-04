@@ -2,10 +2,10 @@ package br.com.controle.domain.model;
 
 public enum StatusOrder {
 
-	OPEN("ABERTA",1),
-	PRODUCTION("EM PRODUÇÃO",2),
-	FINISG("FINALIZADA",3),
-	CANCELED("CANCELADA",4);
+	OPEN("OPEN",1),
+	PRODUCTION("PRODUCTION",2),
+	FINISH("FINISH",3),
+	CANCELED("CANCELED",4);
 
 	private String description;
 	private Integer cod;

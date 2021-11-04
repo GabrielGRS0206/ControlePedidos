@@ -1,13 +1,13 @@
 package br.com.controle.domain.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,9 +22,10 @@ public class Permission implements Serializable {
 
 	private String nome;
 
-	@ManyToMany(mappedBy = "permission")
-	private List<UserSystem> users;
-
+	@ManyToOne
+	@JoinColumn(name = "id_user",nullable = false)
+	private UserSystem user;
+	
 	public Long getId() {
 		return id;
 	}
@@ -41,11 +42,11 @@ public class Permission implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<UserSystem> getUsers() {
-		return users;
+	public UserSystem getUser() {
+		return user;
 	}
 
-	public void setUsers(List<UserSystem> users) {
-		this.users = users;
+	public void setUser(UserSystem user) {
+		this.user = user;
 	}
 }

@@ -1,7 +1,5 @@
 package br.com.controle.domain.service;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +10,6 @@ import br.com.controle.domain.exception.business.MessageException;
 import br.com.controle.domain.model.JwtToken;
 import br.com.controle.domain.model.UserSystem;
 import br.com.controle.domain.utils.CryptUtil;
-import io.jsonwebtoken.Claims;
 
 @Service
 public class AuthenticeService {
@@ -41,9 +38,7 @@ public class AuthenticeService {
 		var token = new JwtToken();
 		token.setType(BEARER);
 
-//		UserSystem user = new UserSystem();//userService.findByEmail(request.getEmail());
-
-		UserSystem user = mockUser();
+		UserSystem user = (UserSystem) userService.loadUserByUsername(request.getEmail());
 
 		boolean passwordOk = CryptUtil.passwordOk(request.getPassword(), user.getPassword());
 
@@ -64,17 +59,6 @@ public class AuthenticeService {
 		return token;
 	}
 
-	/**
-	 * @return
-	 */
-	private UserSystem mockUser() {
-		UserSystem user = new UserSystem();
-		user.setPassword("202cb962ac59075b964b07152d234b7012563985646545");
-		user.setId(1l);
-		user.setEmail("teste@gmail.com");
-		return user;
-	}
-
 	private void blockedUser(UserSystem user) {
 		user.setBlocked("S");
 		userService.update(user);
@@ -88,22 +72,5 @@ public class AuthenticeService {
 
 	private boolean maxErrorPassword(UserSystem user) {
 		return user.getPasswordError().equals(MAX_ERROR);
-	}
-
-	public boolean validaToken(String token) {
-		try {
-			String tokenAuthorization = token.replace(BEARER, "");
-			Claims claims = serviceToken.decodeToken(tokenAuthorization);
-
-			// Verifica se o token está expirado
-			if (claims.getExpiration().before(new Date(System.currentTimeMillis()))) {
-				throw new BusinessException(MessageException.TOKEN_EXPIRED.getValue());
-			}
-			return true;
-		} catch (BusinessException et) {
-			throw new BusinessException(MessageException.TOKEN_EXPIRED.getValue());
-		} catch (Exception e) {
-			throw new BusinessException(MessageException.TOKEN_INVALID.getValue());
-		}
 	}
 }

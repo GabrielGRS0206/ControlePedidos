@@ -13,7 +13,6 @@ import br.com.controle.domain.exception.business.MessageException;
 import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.model.Order;
 import br.com.controle.domain.model.OrderItem;
-import br.com.controle.domain.model.StatusOrder;
 import br.com.controle.domain.repository.OrderItemRepository;
 import br.com.controle.domain.repository.OrderRepository;
 import br.com.controle.domain.repository.ProductRepository;
@@ -37,8 +36,38 @@ public class OrderService implements Services<Order> {
 
 	@Override
 	public Order save(Object obj) {
-		Objects.requireNonNull(obj, MessageException.OBJECT_NOT_NULL.getValue());
+		validate(obj);
 
+		Order order = (Order) obj;
+		order.setTotal(total(order));
+		repository.save(order);
+		order.setItems(saveItems(order,((Order) obj).getItems()));
+
+		populateItems(order);
+		return order;
+	}
+
+	private List<OrderItem> saveItems(Order order, List<OrderItem> items) {
+		items.forEach(e -> e.setOrder(order));
+		orderItemRepository.saveAll(items);
+		return items;
+	}
+
+	private void populateItems(Order order) {
+		order.getItems().forEach(e -> e.setProduct(productRepository.findById(e.getProduct().getId()).get()));
+	}
+
+	private BigDecimal total(Order obj) {
+		BigDecimal total = BigDecimal.ZERO;
+
+		for (OrderItem item : obj.getItems()) {
+			total = total.add(item.totalItem());
+		}
+		return total;
+	}
+
+	private void validate(Object obj) {
+		Objects.requireNonNull(obj, MessageException.OBJECT_NOT_NULL.getValue());
 		if (((Order) obj).getCashRegister() == null || ((Order) obj).getCashRegister().getId() == 0) {
 			throw new BusinessException(MessageException.CASH_REGISTER_NOT_FOUND.getValue(),
 					((Order) obj).getCashRegister().getId());
@@ -56,73 +85,20 @@ public class OrderService implements Services<Order> {
 						((Order) obj).getCashRegister().getId());
 			}
 		}
-
-		List<OrderItem> items = ((Order) obj).getItems();
-
-		BigDecimal total = BigDecimal.ZERO;
-
-		for (OrderItem item : items) {
-			total = total.add(item.totalItem());
-		}
-
-		Order order = (Order) obj;
-		order.setStatus(StatusOrder.OPEN);
-		order.setTotal(total);
-		repository.save(order);
-
-//		items.forEach(e -> e.setId(null));
-		items.forEach(e -> e.setOrder(order));
-
-		orderItemRepository.saveAll(items);
-		items.forEach(e -> e.setProduct(productRepository.findById(e.getProduct().getId()).get()));
-		order.setItems(items);
-
-		return order;
 	}
 
 	@Override
 	public Order update(Object obj) {
-
-		Objects.requireNonNull(obj, MessageException.OBJECT_NOT_NULL.getValue());
-
-		if (((Order) obj).getCashRegister() == null || ((Order) obj).getCashRegister().getId() == 0) {
-			throw new BusinessException(MessageException.REPORT_CASH_REGISTER.getValue());
-		} else {
-
-			Optional<CashRegister> cashRegister = cashRegisterService.findById(((Order) obj).getCashRegister().getId());
-
-			if (cashRegister.isPresent()) {
-				if (Utils.valueDiffZero(cashRegister.get().getTotalClosure())) {
-					throw new BusinessException(MessageException.CASH_REGISTER_CLOSE.getValue(),
-							cashRegister.get().getId());
-				}
-			} else {
-				throw new BusinessException(MessageException.CASH_REGISTER_NOT_FOUND.getValue(),
-						((Order) obj).getCashRegister().getId());
-			}
-		}
+		validate(obj);
 
 		repository.deleteItens(((Order) obj).getIdOrder());
-		List<OrderItem> items = ((Order) obj).getItems();
-
-		BigDecimal total = BigDecimal.ZERO;
-
-		for (OrderItem item : items) {
-			total = total.add(item.totalItem());
-		}
 
 		Order order = (Order) obj;
-		order.setTotal(total);
-		items.forEach(e -> e.setId(null));
+		order.setTotal(total(order));
 		repository.save(order);
+		order.setItems(saveItems(order,((Order) obj).getItems()));
 
-		items.forEach(e -> e.setOrder(order));
-
-		orderItemRepository.saveAll(items);
-
-		items.forEach(e -> e.setProduct(productRepository.findById(e.getProduct().getId()).get()));
-		order.setItems(items);
-
+		populateItems(order);
 		return order;
 	}
 

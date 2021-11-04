@@ -16,8 +16,20 @@ public class PermissionService {
 	private PermissionRepository repository;
 
 	public List<Permission> findPermissionUserId(Long id) {
-		List<Permission> list = new ArrayList<Permission>();
+		List<Permission> list = new ArrayList<>();
+		list = mock();
+		return list;
+	}
 
+	/**
+	 * @return
+	 */
+	private List<Permission> mock() {
+		List<Permission> list = new ArrayList<>();
+		Permission p = new Permission();
+		p.setId(1l);
+		p.setNome("ADMIN");
+		list.add(p);
 		return list;
 	}
 }

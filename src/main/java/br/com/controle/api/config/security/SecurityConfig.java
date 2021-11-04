@@ -36,7 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		this.userRepo = userRepo;
 		this.jwtTokenFilter = jwtTokenFilter;
 
-// Inherit security context in async function calls
 		SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
 	}
 
@@ -46,8 +45,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http = http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and();
 
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/v1/authentice/login").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/health").permitAll().anyRequest().authenticated();
+		http.authorizeRequests()
+				.antMatchers(HttpMethod.POST, "/v1/authentice/login").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/health").permitAll()
+				.anyRequest().authenticated();
 
 		http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 	}

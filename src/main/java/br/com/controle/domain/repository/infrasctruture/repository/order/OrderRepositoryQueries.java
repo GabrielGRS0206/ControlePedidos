@@ -14,7 +14,7 @@ public interface OrderRepositoryQueries {
 	/**
 	Deleta itens por id comanda
 	*/
-	void deleteItens(long id);
+	boolean deleteItens(long id);
 	/**
 	Cancela comanda por id
 	*/
