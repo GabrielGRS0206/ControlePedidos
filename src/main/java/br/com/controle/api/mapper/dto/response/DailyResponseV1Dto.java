@@ -4,25 +4,22 @@ import java.math.BigDecimal;
 
 import br.com.controle.domain.movement.DailyClosing;
 
-public class DailyResponseV1Dto {
+public class DailyResponseV1Dto extends BaseResponseDto {
 
 	private Integer codPayment;
 	private String payment;
 	private BigDecimal total;
 
-	public DailyResponseV1Dto(Integer cod,String payment,BigDecimal total) {
+	public DailyResponseV1Dto(Integer cod, String payment, BigDecimal total) {
 		this.codPayment = cod;
 		this.payment = payment;
 		this.total = total;
 	}
 
 	public static DailyResponseV1Dto toDto(DailyClosing dailyClosing) {
-		return new DailyResponseV1Dto(dailyClosing.getCodPayment(),
-				dailyClosing.getPayment(),
-				dailyClosing.getTotal());
+		return new DailyResponseV1Dto(dailyClosing.getCodPayment(), dailyClosing.getPayment(), dailyClosing.getTotal());
 	}
 
-	//=======GETTERS E SETTERS========
 	public Integer getCodPayment() {
 		return codPayment;
 	}
@@ -46,6 +43,5 @@ public class DailyResponseV1Dto {
 	public void setTotal(BigDecimal total) {
 		this.total = total;
 	}
-
 
 }

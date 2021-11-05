@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import br.com.controle.domain.model.StatusOrder;
 
 @JsonInclude(Include.NON_NULL)
-public class OrderAbstractResponseV1Dto {
+public class OrderAbstractResponseV1Dto extends BaseResponseDto {
 
 	private Long idClient;
 	private String name;

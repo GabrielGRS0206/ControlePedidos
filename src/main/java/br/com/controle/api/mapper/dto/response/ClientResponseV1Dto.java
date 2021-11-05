@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import br.com.controle.domain.utils.Mask;
 
 @JsonInclude(Include.NON_NULL)
-public class ClientResponseV1Dto {
+public class ClientResponseV1Dto extends BaseResponseDto {
 
 	private long id;
 	private String name;
@@ -20,7 +20,7 @@ public class ClientResponseV1Dto {
 	private String proximity;
 	private String observation;
 	private String number;
-	
+
 	public String getDocument() {
 		return Mask.formatMaskIntelligent(document);
 	}

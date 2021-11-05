@@ -16,7 +16,7 @@ import br.com.controle.domain.utils.Utils;
 
 @Entity
 @Table(name = "order_item")
-public class OrderItem {
+public class OrderItem extends BaseEntity{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

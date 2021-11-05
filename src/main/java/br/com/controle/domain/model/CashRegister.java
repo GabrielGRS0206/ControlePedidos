@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cash_register")
-public class CashRegister {
+public class CashRegister extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +27,9 @@ public class CashRegister {
 	@Column
 	private LocalDate date;
 
-	public CashRegister(LocalDate data, BigDecimal valor, boolean abertura) {
+	public CashRegister(LocalDate data, BigDecimal valor, boolean open) {
 
-		if (abertura) {
+		if (open) {
 			this.date = data;
 			this.totalOpening = valor;
 			this.totalClosure = BigDecimal.ZERO;

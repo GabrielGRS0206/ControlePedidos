@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "permission")
-public class Permission implements Serializable {
+public class Permission extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,9 +23,9 @@ public class Permission implements Serializable {
 	private String nome;
 
 	@ManyToOne
-	@JoinColumn(name = "id_user",nullable = false)
+	@JoinColumn(name = "id_user", nullable = false)
 	private UserSystem user;
-	
+
 	public Long getId() {
 		return id;
 	}

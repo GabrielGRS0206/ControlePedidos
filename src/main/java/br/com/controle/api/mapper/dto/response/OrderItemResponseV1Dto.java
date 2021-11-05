@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import br.com.controle.domain.model.OrderItem;
 
 @JsonInclude(Include.NON_NULL)
-public class OrderItemResponseV1Dto {
+public class OrderItemResponseV1Dto extends BaseResponseDto {
 
 	private Long idItem;
 	private Long productId;

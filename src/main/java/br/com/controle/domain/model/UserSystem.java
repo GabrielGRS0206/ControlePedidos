@@ -18,7 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "user_user")
-public class UserSystem implements UserDetails {
+public class UserSystem extends BaseEntity implements UserDetails {
 
 	/**
 	 * 

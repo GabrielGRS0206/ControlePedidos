@@ -10,7 +10,7 @@ import br.com.controle.domain.model.StatusOrder;
 import br.com.controle.domain.utils.Utils;
 
 @JsonInclude(Include.NON_NULL)
-public class OrderResponseV1Dto {
+public class OrderResponseV1Dto extends BaseResponseDto {
 
 	private Long id;
 	private List<OrderItemResponseV1Dto> items;
@@ -59,7 +59,6 @@ public class OrderResponseV1Dto {
 	public void setItems(List<OrderItemResponseV1Dto> items) {
 		this.items = items;
 	}
-
 
 	public Long getClientId() {
 		return clientId;
