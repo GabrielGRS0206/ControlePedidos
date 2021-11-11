@@ -1,6 +1,6 @@
 package br.com.controle.api.mapper.dto.response;
 
-import br.com.controle.domain.model.JwtToken;
+import br.com.controle.domain.model.security.JwtToken;
 
 public class UserAuthenticeResponseV1DTO extends BaseResponseDto {
 	private String token;

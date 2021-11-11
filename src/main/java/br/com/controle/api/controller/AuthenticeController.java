@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.controle.api.mapper.dto.request.UserRequestV1DTO;
 import br.com.controle.api.mapper.dto.response.UserAuthenticeResponseV1DTO;
-import br.com.controle.domain.model.JwtToken;
+import br.com.controle.domain.model.security.JwtToken;
 import br.com.controle.domain.service.AuthenticeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

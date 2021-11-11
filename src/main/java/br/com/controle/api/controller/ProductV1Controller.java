@@ -72,6 +72,7 @@ public class ProductV1Controller extends BaseController {
 	}
 
 	@GetMapping("/filter")
+	@ApiOperation("Busca filtrada")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Produtos recuperados com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),

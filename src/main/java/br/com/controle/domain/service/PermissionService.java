@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.controle.domain.model.Permission;
+import br.com.controle.domain.model.security.Permission;
 import br.com.controle.domain.repository.PermissionRepository;
 
 @Service
@@ -21,9 +21,6 @@ public class PermissionService {
 		return list;
 	}
 
-	/**
-	 * @return
-	 */
 	private List<Permission> mock() {
 		List<Permission> list = new ArrayList<>();
 		Permission p = new Permission();

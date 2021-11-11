@@ -48,7 +48,7 @@ public class CashRegisterV1Controller extends BaseController {
 	}
 
 	@PostMapping("/close/{id}")
-	@ResponseStatus(HttpStatus.CREATED)
+	@ResponseStatus(HttpStatus.OK)
 	@ApiOperation("Fechamento caixa")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Fechamento de caixa efetuado com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),

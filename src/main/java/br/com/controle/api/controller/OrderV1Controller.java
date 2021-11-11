@@ -47,7 +47,7 @@ public class OrderV1Controller extends BaseController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	@ApiOperation("Adicionar pedido")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Pedido adicionada com sucesso"),
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "Pedido adicionado com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })

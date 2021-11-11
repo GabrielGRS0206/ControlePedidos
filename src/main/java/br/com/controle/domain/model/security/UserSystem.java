@@ -1,4 +1,4 @@
-package br.com.controle.domain.model;
+package br.com.controle.domain.model.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,6 +15,8 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import br.com.controle.domain.model.BaseEntity;
 
 @Entity
 @Table(name = "user_user")

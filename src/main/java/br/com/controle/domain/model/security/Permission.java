@@ -1,4 +1,4 @@
-package br.com.controle.domain.model;
+package br.com.controle.domain.model.security;
 
 import java.io.Serializable;
 
@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import br.com.controle.domain.model.BaseEntity;
 
 @Entity
 @Table(name = "permission")

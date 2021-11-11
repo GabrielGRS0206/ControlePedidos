@@ -15,11 +15,6 @@ public class CryptUtil {
 		return false;
 	}
 
-	public static void main(String[] args) {
-
-		System.out.println(hash("123"));
-	}
-
 	public static String hash(String value) {
 		MessageDigest md;
 		try {

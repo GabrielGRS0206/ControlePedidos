@@ -32,7 +32,7 @@ public class DailyClosingController extends BaseController {
 	private DailyClosingService service;
 
 	@GetMapping("/total_cash_register/{id}")
-	@ResponseStatus(HttpStatus.CREATED)
+	@ResponseStatus(HttpStatus.OK)
 	@ApiOperation("Recupera totais por forma de pagamento")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Dados recuperados com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),

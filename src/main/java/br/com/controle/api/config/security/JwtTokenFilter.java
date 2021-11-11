@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import br.com.controle.domain.service.UserService;
-import io.jsonwebtoken.Jwts;
 
 @Component
 public class JwtTokenFilter extends OncePerRequestFilter {
@@ -60,14 +59,5 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
 	public static boolean isEmpty(Object str) {
 		return (str == null || "".equals(str));
-	}
-
-	public boolean isTokenValid(String token) {
-		try {
-			Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
 	}
 }

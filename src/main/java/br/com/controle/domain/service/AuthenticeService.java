@@ -7,8 +7,8 @@ import br.com.controle.api.config.security.JwtTokenUtil;
 import br.com.controle.api.mapper.dto.request.UserRequestV1DTO;
 import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.exception.business.MessageException;
-import br.com.controle.domain.model.JwtToken;
-import br.com.controle.domain.model.UserSystem;
+import br.com.controle.domain.model.security.JwtToken;
+import br.com.controle.domain.model.security.UserSystem;
 import br.com.controle.domain.utils.CryptUtil;
 
 @Service
@@ -24,9 +24,6 @@ public class AuthenticeService {
 	@Autowired
 	private UserService userService;
 
-	/**
-	 * @param tokenService
-	 */
 	public AuthenticeService(JwtTokenUtil tokenService) {
 		this.serviceToken = tokenService;
 	}

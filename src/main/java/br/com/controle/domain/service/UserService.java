@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.exception.business.MessageException;
-import br.com.controle.domain.model.Permission;
-import br.com.controle.domain.model.UserSystem;
+import br.com.controle.domain.model.security.Permission;
+import br.com.controle.domain.model.security.UserSystem;
 import br.com.controle.domain.repository.UserRepository;
 
 @Service
