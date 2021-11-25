@@ -5,6 +5,7 @@ package br.com.controle.domain.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -21,6 +22,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.model.Order;
 import br.com.controle.domain.model.OrderItem;
@@ -79,7 +81,6 @@ class OrderServiceTest {
 		Order entity = service.save(order);
 
 		assertNotNull(entity);
-
 	}
 
 	private List<OrderItem> items() {
@@ -183,4 +184,15 @@ class OrderServiceTest {
 		assertEquals(cancel, true);
 	}
 
+	/**
+	 * Test method for
+	 * {@link br.com.controle.domain.service.OrderService#cancel(java.lang.Long)}.
+	 */
+	@Test
+	final void testValidateThrowsException() {
+		BusinessException exception = assertThrows(BusinessException.class, ()->{
+			service.save(new Order());
+		});
+		assertNotNull(exception, "exception is null");
+	}
 }

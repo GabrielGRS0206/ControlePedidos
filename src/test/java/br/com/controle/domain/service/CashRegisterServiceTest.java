@@ -3,7 +3,9 @@
  */
 package br.com.controle.domain.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -20,12 +22,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.repository.CashRegisterRepository;
 
-/**
- * @author Gabriel Rocha
- */
 //@RunWith(SpringRunner.class)
 class CashRegisterServiceTest {
 
@@ -104,4 +104,35 @@ class CashRegisterServiceTest {
 		assertTrue(retorno);
 	}
 
+	/**
+	 * Test method for
+	 * {@link br.com.controle.domain.service.CashRegisterService#findById(java.lang.Long)}.
+	 */
+	@Test
+	final void testFindByIdThrowsException() {
+		
+		when(repository.existsById(any())).thenReturn(false);
+		
+		BusinessException exception = assertThrows(BusinessException.class, () ->{
+			 service.findById(1l);
+		});
+		assertNotNull(exception, "exception is null");
+	}
+	
+	/**
+	 * Test method for
+	 * {@link br.com.controle.domain.service.CashRegisterService#openCashRegister(java.lang.Long)}.
+	 */
+	@Test
+	final void testOpenCashRegisterFalse() {
+		
+		when(repository.existsById(any())).thenReturn(true);
+		CashRegister obj = new CashRegister();
+		obj.setTotalClosure(BigDecimal.ZERO);
+		when(repository.findById(1l)).thenReturn(Optional.of(obj));
+		
+		boolean retorno = service.openCashRegister(1l);
+		assertEquals(retorno, false);
+		
+	}
 }

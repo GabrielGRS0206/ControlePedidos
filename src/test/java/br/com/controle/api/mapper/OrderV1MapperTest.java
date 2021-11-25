@@ -3,10 +3,12 @@
  */
 package br.com.controle.api.mapper;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -62,9 +64,6 @@ class OrderV1MapperTest {
 		assertNotNull(order, "order is null");
 	}
 
-	/**
-	 * @return
-	 */
 	private OrderRequestV1Dto mock() {
 		var request = new OrderRequestV1Dto();
 		var item= new OrderItemRequestV1Dto();
@@ -72,7 +71,28 @@ class OrderV1MapperTest {
 		item.setPrice(BigDecimal.ONE);
 		item.setQuantity(BigDecimal.ONE);
 		request.setItems(Arrays.asList(item));
+		request.setIdClient(1l);
 		return request;
 	}
+	
+
+	/**
+	 * Test method for
+	 * {@link br.com.controle.api.mapper.OrderV1Mapper#listToDto(br.com.controle.api.mapper.dto.request.OrderRequestV1Dto)}.
+	 */
+	@Test
+	void testListToDto() {
+		List<OrderResponseV1Dto> orders = mapper.listToDto(orders(), OrderV1Mapper.SUMMARY);
+		assertNotNull(orders, "order is null");
+		assertEquals(orders.size(), 3);
+	}
+
+	private List<Order> orders() {
+		var order = new Order();
+		order.setItems(Arrays.asList(new OrderItem()));
+		return Arrays.asList(order,order,order);
+	}
+	
+	
 
 }

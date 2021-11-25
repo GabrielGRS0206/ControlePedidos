@@ -5,6 +5,7 @@ package br.com.controle.api.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 
 import java.math.BigDecimal;
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import br.com.controle.api.mapper.dto.request.ProductRequestV1Dto;
 import br.com.controle.api.mapper.dto.response.ProductResponseV1Dto;
+import br.com.controle.domain.exception.business.DtoInvalidException;
 import br.com.controle.domain.model.Product;
 import br.com.controle.domain.utils.Utils;
 
@@ -69,4 +71,17 @@ class ProductV1MapperTest {
 		assertNotNull(product);
 	}
 
+	/**
+	 * Test method for
+	 * {@link br.com.controle.api.mapper.ProductV1Mapper#toEntity(br.com.controle.api.mapper.dto.request.ProductRequestV1Dto)}.
+	 */
+	@Test
+	final void testToEntityThrowsException() {
+
+		DtoInvalidException exception = assertThrows(DtoInvalidException.class, () ->{
+			 mapper.toEntity(new ProductRequestV1Dto());
+		});
+		assertNotNull(exception,"exception is null");
+	}
+	
 }

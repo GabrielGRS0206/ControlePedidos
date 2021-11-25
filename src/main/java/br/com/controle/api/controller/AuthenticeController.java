@@ -36,8 +36,8 @@ public class AuthenticeController extends BaseController {
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
-	public ResponseEntity<Object> token(@RequestBody UserRequestV1DTO reqeuest) {
-		JwtToken user = authentice.authentice(reqeuest);
+	public ResponseEntity<Object> token(@RequestBody UserRequestV1DTO request) {
+		JwtToken user = authentice.authentice(request.getEmail(), request.getPassword());
 		return ok(new UserAuthenticeResponseV1DTO(user));
 	}
 }

@@ -3,8 +3,9 @@ package br.com.controle.domain.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.common.base.Strings;
+
 import br.com.controle.api.config.security.JwtTokenUtil;
-import br.com.controle.api.mapper.dto.request.UserRequestV1DTO;
 import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.exception.business.MessageException;
 import br.com.controle.domain.model.security.JwtToken;
@@ -24,20 +25,20 @@ public class AuthenticeService {
 	@Autowired
 	private UserService userService;
 
-	public AuthenticeService(JwtTokenUtil tokenService) {
-		this.serviceToken = tokenService;
-	}
+//	public AuthenticeService(JwtTokenUtil tokenService) {
+//		this.serviceToken = tokenService;
+//	}
 
-	public JwtToken authentice(UserRequestV1DTO request) {
+	public JwtToken authentice(String email,String password) {
 
-		firstValidation(request);
+		firstValidation(email,password);
 
 		var token = new JwtToken();
 		token.setType(BEARER);
 
-		UserSystem user = (UserSystem) userService.loadUserByUsername(request.getEmail());
+		UserSystem user = (UserSystem) userService.loadUserByUsername(email);
 
-		boolean passwordOk = CryptUtil.passwordOk(request.getPassword(), user.getPassword());
+		boolean passwordOk = CryptUtil.passwordOk(password, user.getPassword());
 
 		if (user.isBlocked()) {
 			throw new BusinessException(MessageException.USER_BLOCK.getValue());
@@ -61,8 +62,8 @@ public class AuthenticeService {
 		userService.update(user);
 	}
 
-	private void firstValidation(UserRequestV1DTO request) {
-		if (request.getEmail().equals("") || !request.getEmail().contains("@") || request.getPassword().equals("")) {
+	private void firstValidation(String email,String password) {
+		if (Strings.isNullOrEmpty(email) || !email.contains("@") || Strings.isNullOrEmpty(password)) {
 			throw new BusinessException(MessageException.DATA_IMCOMPLET.getValue());
 		}
 	}

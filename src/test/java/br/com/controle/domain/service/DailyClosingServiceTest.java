@@ -4,6 +4,8 @@
 package br.com.controle.domain.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
@@ -16,6 +18,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.movement.DailyClosing;
 import br.com.controle.domain.repository.infrasctruture.repository.dailyClosing.DailyClosingImpl;
 
@@ -33,18 +36,11 @@ class DailyClosingServiceTest {
 	@InjectMocks
 	private DailyClosingService serviceDailyClosingService;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@BeforeEach
 	void setUp() throws Exception {
 		MockitoAnnotations.openMocks(this);
 	}
 
-	/**
-	 * Test method for
-	 * {@link br.com.controle.domain.service.DailyClosingService#list(long)}.
-	 */
 	@Test
 	final void testList() {
 
@@ -62,5 +58,15 @@ class DailyClosingServiceTest {
 		list.add(new DailyClosing(1, BigDecimal.ZERO));
 		return list;
 	}
-
+	
+	@Test
+	void testListThrows() {
+		
+		when(service.existsById(1l)).thenReturn(false);
+		
+		BusinessException exception = assertThrows(BusinessException.class, () ->{
+			serviceDailyClosingService.list(1l);
+		});
+		assertNotNull(exception, "exception is null");
+	}
 }

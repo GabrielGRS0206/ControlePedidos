@@ -25,4 +25,9 @@ public class CryptUtil {
 		BigInteger hash = new BigInteger(1, md.digest(value.trim().getBytes()));
 		return hash.toString(16).concat(SECRET);
 	}
+	
+	public static void main(String[] args) {
+		
+		System.out.println(hash("123"));
+	}
 }

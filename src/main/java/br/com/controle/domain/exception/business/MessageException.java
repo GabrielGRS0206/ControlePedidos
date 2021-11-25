@@ -7,6 +7,7 @@ public enum MessageException {
 	TOKEN_EXPIRED("Token expirado"),
 	TOKEN_INVALID("Token invalido"), 
 	CASH_REGISTER_NOT_FOUND("Caixa com código %d não encontrado"),
+	CASH_REGISTER_INVALID("Caixa não informado ou inválido"),
 	CLIENT_ID_NOT_FOUND("Cliente com código %d não encontrado"),
 	CLIENT_REGISTERED("Cliente já cadastrado,código : %d"),
 	CLIENT_DOCUMENT_NOT_FOUND("Cliente com CPF/CNPJ %d não encontrado"),

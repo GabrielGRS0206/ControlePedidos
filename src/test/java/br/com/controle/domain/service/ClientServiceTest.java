@@ -5,6 +5,7 @@ package br.com.controle.domain.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -20,14 +21,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.model.Client;
 import br.com.controle.domain.repository.ClientRepository;
 import br.com.controle.domain.service.validation.DeleteClientValidation;
 
-/**
- * @author Gabriel Rocha
- */
 class ClientServiceTest {
+
+	private static final String DOCUMENT = "11122255588";
 
 	@Mock
 	private ClientRepository repository;
@@ -52,26 +53,44 @@ class ClientServiceTest {
 	 */
 	@Test
 	final void testSave() {
+		
+		when(repository.save(any())).thenReturn(new Client(1l));
+		when(repository.findByDocument(DOCUMENT)).thenReturn(Optional.empty());
 
-		/*assertThrows(BusinessException.class, () -> {
-			Client entity = new Client();
-			when(repository.save(any())).thenReturn(Optional.of(entity));
-			when(repository.findByDocument(any())).thenReturn(Optional.of(new Client()));
-
-			service.save(new Client());
-		});*/
+		Client client = new Client();
+		client.setDocument(DOCUMENT);
+		Client obj = service.save(client);
+		assertNotNull(obj, "client is null");
 	}
 
+	/**
+	 * Test method for
+	 * {@link br.com.controle.domain.service.ClientService#save(java.lang.Object)}.
+	 */
+	@Test
+	final void testSaveThrows() {
+		
+		when(repository.findByDocument(DOCUMENT)).thenReturn(Optional.of(new Client(1l)));
+
+		Client client = new Client();
+		client.setDocument(DOCUMENT);
+		
+		BusinessException exception = assertThrows(BusinessException.class, () ->{
+			 service.save(client);
+		});
+		assertNotNull(exception, "exception");
+	}
+	
 	/**
 	 * Test method for
 	 * {@link br.com.controle.domain.service.ClientService#update(java.lang.Object)}.
 	 */
 	@Test
 	final void testUpdate() {
-		
-	/*	Client entity = new Client();
+		/*Client entity = new Client();
+		entity.setId(1l);
 		when(repository.save(any())).thenReturn(Optional.of(entity));
-		Client client = service.update(mock(Client.class));
+		Client client = service.update(entity);
 		assertNotNull(client);
 		verify(repository,times(1)).save(any());*/
 	}
@@ -102,6 +121,35 @@ class ClientServiceTest {
 
 	/**
 	 * Test method for
+	 * {@link br.com.controle.domain.service.ClientService#findByDocument(String)}.
+	 */
+	@Test
+	final void testFindByDocument() {
+
+		when(repository.findByDocument(any())).thenReturn(Optional.of(new Client()));
+
+		Optional<Client> client = service.findByDocument(DOCUMENT);
+
+		assertNotNull(client.get());
+	}
+	
+	/**
+	 * Test method for
+	 * {@link br.com.controle.domain.service.ClientService#findByDocument(String)}.
+	 */
+	@Test
+	final void testFindByDocumentThrows() {
+
+		when(repository.findByDocument(any())).thenReturn(Optional.empty());
+
+		BusinessException exception = assertThrows(BusinessException.class, () ->{
+			service.findByDocument(DOCUMENT);
+		});
+		assertNotNull(exception, "exception is null");
+	}
+	
+	/**
+	 * Test method for
 	 * {@link br.com.controle.domain.service.ClientService#findAll()}.
 	 */
 	@Test
@@ -113,5 +161,20 @@ class ClientServiceTest {
 
 		assertNotNull(clients);
 		assertEquals(clients.size(), 1);
+	}
+	
+	/**
+	 * Test method for
+	 * {@link br.com.controle.domain.service.ClientService#findByDocument(String)}.
+	 */
+	@Test
+	final void testFindByIdtThrows() {
+
+		when(repository.findById(any())).thenReturn(Optional.empty());
+
+		BusinessException exception = assertThrows(BusinessException.class, () ->{
+			service.findById(1l);
+		});
+		assertNotNull(exception, "exception is null");
 	}
 }

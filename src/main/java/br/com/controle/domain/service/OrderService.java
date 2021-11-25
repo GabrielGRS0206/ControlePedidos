@@ -41,7 +41,7 @@ public class OrderService implements Services<Order> {
 		Order order = (Order) obj;
 		order.setTotal(total(order));
 		repository.save(order);
-		order.setItems(saveItems(order,((Order) obj).getItems()));
+		order.setItems(saveItems(order, ((Order) obj).getItems()));
 
 		populateItems(order);
 		return order;
@@ -68,22 +68,27 @@ public class OrderService implements Services<Order> {
 
 	private void validate(Object obj) {
 		Objects.requireNonNull(obj, MessageException.OBJECT_NOT_NULL.getValue());
-		if (((Order) obj).getCashRegister() == null || ((Order) obj).getCashRegister().getId() == 0) {
+		validateCashRegisterInformed(obj);
+
+		Optional<CashRegister> cashRegister = cashRegisterService.findById(((Order) obj).getCashRegister().getId());
+		validateCashRegister(cashRegister, obj);
+	}
+
+	private void validateCashRegister(Optional<CashRegister> cashRegister, Object obj) {
+		if (cashRegister.isPresent()) {
+			if (Utils.valueDiffZero(cashRegister.get().getTotalClosure())) {
+				throw new BusinessException(MessageException.CASH_REGISTER_CLOSE.getValue(),
+						cashRegister.get().getId());
+			}
+		} else {
 			throw new BusinessException(MessageException.CASH_REGISTER_NOT_FOUND.getValue(),
 					((Order) obj).getCashRegister().getId());
-		} else {
+		}
+	}
 
-			Optional<CashRegister> cashRegister = cashRegisterService.findById(((Order) obj).getCashRegister().getId());
-
-			if (cashRegister.isPresent()) {
-				if (Utils.valueDiffZero(cashRegister.get().getTotalClosure())) {
-					throw new BusinessException(MessageException.CASH_REGISTER_CLOSE.getValue(),
-							cashRegister.get().getId());
-				}
-			} else {
-				throw new BusinessException(MessageException.CASH_REGISTER_NOT_FOUND.getValue(),
-						((Order) obj).getCashRegister().getId());
-			}
+	private void validateCashRegisterInformed(Object obj) {
+		if (((Order) obj).getCashRegister() == null || ((Order) obj).getCashRegister().getId() == 0) {
+			throw new BusinessException(MessageException.CASH_REGISTER_INVALID.getValue());
 		}
 	}
 
@@ -96,7 +101,7 @@ public class OrderService implements Services<Order> {
 		Order order = (Order) obj;
 		order.setTotal(total(order));
 		repository.save(order);
-		order.setItems(saveItems(order,((Order) obj).getItems()));
+		order.setItems(saveItems(order, ((Order) obj).getItems()));
 
 		populateItems(order);
 		return order;
