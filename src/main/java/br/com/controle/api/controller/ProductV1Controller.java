@@ -24,9 +24,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.controle.api.mapper.ProductV1Mapper;
-import br.com.controle.api.mapper.dto.request.ProductRequestV1Dto;
-import br.com.controle.api.mapper.dto.response.ProductResponseV1Dto;
+import br.com.controle.api.model.dto.request.ProductRequestV1Dto;
+import br.com.controle.api.model.dto.response.ProductResponseV1Dto;
+import br.com.controle.api.model.mapper.ProductV1Mapper;
 import br.com.controle.domain.model.Product;
 import br.com.controle.domain.service.ProductService;
 import br.com.controle.domain.specification.ProductDescriptionSpecification;

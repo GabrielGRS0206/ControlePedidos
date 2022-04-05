@@ -1,4 +1,4 @@
-package br.com.controle.api.mapper.dto.response;
+package br.com.controle.api.model.dto.response;
 
 import java.time.LocalDateTime;
 

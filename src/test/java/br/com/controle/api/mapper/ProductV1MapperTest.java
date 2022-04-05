@@ -14,8 +14,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.controle.api.mapper.dto.request.ProductRequestV1Dto;
-import br.com.controle.api.mapper.dto.response.ProductResponseV1Dto;
+import br.com.controle.api.model.dto.request.ProductRequestV1Dto;
+import br.com.controle.api.model.dto.response.ProductResponseV1Dto;
+import br.com.controle.api.model.mapper.ProductV1Mapper;
 import br.com.controle.domain.exception.business.DtoInvalidException;
 import br.com.controle.domain.model.Product;
 import br.com.controle.domain.utils.Utils;
@@ -29,7 +30,7 @@ class ProductV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.mapper.ProductV1Mapper#toDto(br.com.controle.domain.model.Product)}.
+	 * {@link br.com.controle.api.model.mapper.ProductV1Mapper#toDto(br.com.controle.domain.model.Product)}.
 	 */
 	@Test
 	final void testToDto() {
@@ -40,7 +41,7 @@ class ProductV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.mapper.ProductV1Mapper#listToDto(java.util.List)}.
+	 * {@link br.com.controle.api.model.mapper.ProductV1Mapper#listToDto(java.util.List)}.
 	 */
 	@Test
 	final void testListToDto() {
@@ -57,7 +58,7 @@ class ProductV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.mapper.ProductV1Mapper#toEntity(br.com.controle.api.mapper.dto.request.ProductRequestV1Dto)}.
+	 * {@link br.com.controle.api.model.mapper.ProductV1Mapper#toEntity(br.com.controle.api.model.dto.request.ProductRequestV1Dto)}.
 	 */
 	@Test
 	final void testToEntity() {
@@ -73,7 +74,7 @@ class ProductV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.mapper.ProductV1Mapper#toEntity(br.com.controle.api.mapper.dto.request.ProductRequestV1Dto)}.
+	 * {@link br.com.controle.api.model.mapper.ProductV1Mapper#toEntity(br.com.controle.api.model.dto.request.ProductRequestV1Dto)}.
 	 */
 	@Test
 	final void testToEntityThrowsException() {

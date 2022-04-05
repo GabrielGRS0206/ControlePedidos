@@ -1,4 +1,4 @@
-package br.com.controle.api.mapper;
+package br.com.controle.api.model.mapper;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import br.com.controle.api.mapper.dto.request.OrderItemRequestV1Dto;
-import br.com.controle.api.mapper.dto.request.OrderRequestV1Dto;
-import br.com.controle.api.mapper.dto.response.OrderItemResponseV1Dto;
-import br.com.controle.api.mapper.dto.response.OrderResponseV1Dto;
+import br.com.controle.api.model.dto.request.OrderItemRequestV1Dto;
+import br.com.controle.api.model.dto.request.OrderRequestV1Dto;
+import br.com.controle.api.model.dto.response.OrderItemResponseV1Dto;
+import br.com.controle.api.model.dto.response.OrderResponseV1Dto;
 import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.model.Client;
 import br.com.controle.domain.model.Order;

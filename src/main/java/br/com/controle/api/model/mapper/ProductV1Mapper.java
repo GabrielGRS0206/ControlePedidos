@@ -1,12 +1,12 @@
-package br.com.controle.api.mapper;
+package br.com.controle.api.model.mapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import br.com.controle.api.mapper.dto.request.ProductRequestV1Dto;
-import br.com.controle.api.mapper.dto.response.ProductResponseV1Dto;
+import br.com.controle.api.model.dto.request.ProductRequestV1Dto;
+import br.com.controle.api.model.dto.response.ProductResponseV1Dto;
 import br.com.controle.domain.model.Product;
 
 @Component

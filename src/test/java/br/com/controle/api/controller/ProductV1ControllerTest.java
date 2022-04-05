@@ -18,8 +18,8 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 
-import br.com.controle.api.mapper.ProductV1Mapper;
-import br.com.controle.api.mapper.dto.response.ProductResponseV1Dto;
+import br.com.controle.api.model.dto.response.ProductResponseV1Dto;
+import br.com.controle.api.model.mapper.ProductV1Mapper;
 import br.com.controle.domain.model.Product;
 import br.com.controle.domain.service.ProductService;
 

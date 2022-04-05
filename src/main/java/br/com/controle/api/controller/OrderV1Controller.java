@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.controle.api.mapper.OrderV1Mapper;
-import br.com.controle.api.mapper.dto.request.OrderRequestV1Dto;
-import br.com.controle.api.mapper.dto.response.OrderResponseV1Dto;
+import br.com.controle.api.model.dto.request.OrderRequestV1Dto;
+import br.com.controle.api.model.dto.response.OrderResponseV1Dto;
+import br.com.controle.api.model.mapper.OrderV1Mapper;
 import br.com.controle.domain.model.Order;
 import br.com.controle.domain.model.StatusOrder;
 import br.com.controle.domain.service.OrderService;

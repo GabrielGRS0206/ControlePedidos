@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.controle.api.mapper.dto.request.CashRegisterClosureRequestV1Dto;
-import br.com.controle.api.mapper.dto.request.CashRegisterOpenRequestV1Dto;
+import br.com.controle.api.model.dto.request.CashRegisterClosureRequestV1Dto;
+import br.com.controle.api.model.dto.request.CashRegisterOpenRequestV1Dto;
 import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.service.CashRegisterService;
 import io.swagger.annotations.Api;

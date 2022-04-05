@@ -1,4 +1,4 @@
-package br.com.controle.api.mapper.dto.request;
+package br.com.controle.api.model.dto.request;
 
 import java.util.List;
 

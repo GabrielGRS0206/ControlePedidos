@@ -11,8 +11,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.controle.api.mapper.dto.request.ClientRequestV1Dto;
-import br.com.controle.api.mapper.dto.response.ClientResponseV1Dto;
+import br.com.controle.api.model.dto.request.ClientRequestV1Dto;
+import br.com.controle.api.model.dto.response.ClientResponseV1Dto;
+import br.com.controle.api.model.mapper.ClientV1Mapper;
 import br.com.controle.domain.model.Client;
 import br.com.controle.domain.utils.Utils;
 
@@ -28,7 +29,7 @@ class ClientV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.mapper.ClientV1Mapper#toDto(br.com.controle.domain.model.Client)}.
+	 * {@link br.com.controle.api.model.mapper.ClientV1Mapper#toDto(br.com.controle.domain.model.Client)}.
 	 */
 	@Test
 	final void testToDto() {
@@ -38,7 +39,7 @@ class ClientV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.mapper.ClientV1Mapper#listToDto(java.util.List)}.
+	 * {@link br.com.controle.api.model.mapper.ClientV1Mapper#listToDto(java.util.List)}.
 	 */
 	@Test
 	final void testListToDto() {
@@ -54,7 +55,7 @@ class ClientV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.mapper.ClientV1Mapper#toEntity(br.com.controle.api.mapper.dto.request.ClientRequestV1Dto)}.
+	 * {@link br.com.controle.api.model.mapper.ClientV1Mapper#toEntity(br.com.controle.api.model.dto.request.ClientRequestV1Dto)}.
 	 */
 	@Test
 	final void testToEntity() {

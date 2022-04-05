@@ -1,4 +1,4 @@
-package br.com.controle.api.mapper;
+package br.com.controle.api.model.mapper;
 
 import java.util.Set;
 

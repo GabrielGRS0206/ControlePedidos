@@ -15,8 +15,8 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 
-import br.com.controle.api.mapper.dto.request.CashRegisterClosureRequestV1Dto;
-import br.com.controle.api.mapper.dto.request.CashRegisterOpenRequestV1Dto;
+import br.com.controle.api.model.dto.request.CashRegisterClosureRequestV1Dto;
+import br.com.controle.api.model.dto.request.CashRegisterOpenRequestV1Dto;
 import br.com.controle.domain.model.CashRegister;
 import br.com.controle.domain.service.CashRegisterService;
 
