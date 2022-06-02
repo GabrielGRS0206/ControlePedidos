@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @Api(value = "Operações relacionadas a abertura e fechamento de caixas")
 @CrossOrigin(origins = "*", methods = { RequestMethod.POST})
-@RequestMapping("/v1/cash_register")
+@RequestMapping("/v1/cash_registers")
 public class CashRegisterV1Controller extends BaseController {
 
 	@Autowired
