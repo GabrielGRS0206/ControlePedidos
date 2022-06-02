@@ -35,7 +35,7 @@ import io.swagger.annotations.ApiResponses;
 @Api(value = "Operações relacionadas a controle de orders")
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
 		RequestMethod.DELETE })
-@RequestMapping("/v1/order")
+@RequestMapping("/v1/orders")
 public class OrderV1Controller extends BaseController {
 
 	@Autowired
