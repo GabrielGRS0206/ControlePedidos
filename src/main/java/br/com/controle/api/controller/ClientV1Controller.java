@@ -119,6 +119,9 @@ public class ClientV1Controller extends BaseController {
 			@ApiResponse(code = 500, message = "O aplicativo servidor falhou ao processar a solicitação") })
 	public ResponseEntity<Object> findById(@PathVariable Long id) {
 		Optional<Client> entity = service.findById(id);
+
+		System.out.println("TESTE" + entity != null);
+
 		return ok(mapper.toDto(entity.get()));
 	}
 

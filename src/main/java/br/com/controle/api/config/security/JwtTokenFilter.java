@@ -1,13 +1,9 @@
 package br.com.controle.api.config.security;
 
-import java.io.IOException;
-
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import br.com.controle.domain.model.security.UserSystem;
+import br.com.controle.domain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +11,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import br.com.controle.domain.service.UserService;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Component
 public class JwtTokenFilter extends OncePerRequestFilter {
@@ -44,17 +44,20 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 			return;
 		}
 
-		// -------------------------------------
 		String email = jwtTokenUtil.getTokenId(token);
 
 		UserDetails user = userService.loadUserByUsername(email);
 
 		if (user != null) {
-			UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
-					user, null, user.getAuthorities());
-			SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-			filterChain.doFilter(request, response);
+			authentice(request, response, filterChain, user);
 		}
+	}
+
+	private void authentice(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain, UserDetails user) throws IOException, ServletException {
+		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
+				user, null, user.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+		filterChain.doFilter(request, response);
 	}
 
 	public static boolean isEmpty(Object str) {

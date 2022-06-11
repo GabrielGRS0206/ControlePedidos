@@ -1,7 +1,9 @@
 package br.com.controle.api.model.dto.response;
 
 import br.com.controle.domain.model.security.JwtToken;
+import lombok.Data;
 
+@Data
 public class UserAuthenticeResponseV1DTO extends BaseResponseDto {
 	private String token;
 	private String type;
@@ -9,17 +11,5 @@ public class UserAuthenticeResponseV1DTO extends BaseResponseDto {
 	public UserAuthenticeResponseV1DTO(JwtToken user) {
 		this.token = user.getToken();
 		this.type = user.getType();
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 }

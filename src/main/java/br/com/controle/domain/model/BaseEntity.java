@@ -1,18 +1,20 @@
 package br.com.controle.domain.model;
 
-import java.time.LocalDateTime;
+import br.com.controle.domain.converters.LocalDateTimeToDateConverter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.MappedSuperclass;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
-import br.com.controle.domain.converters.LocalDateTimeToDateConverter;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 @JsonInclude(Include.NON_NULL)
+@Data
+@EqualsAndHashCode
 public abstract class BaseEntity {
 
 	@Column(name = "create_date", insertable = false, updatable = false)

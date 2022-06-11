@@ -48,7 +48,7 @@ class DailyClosingServiceTest {
 		when(repository.totalCashRegister(1l)).thenReturn(list());
 
 		List<DailyClosing> list = serviceDailyClosingService.list(1l);
-		assertEquals(list.size(), 3);
+		assertEquals(3, list.size());
 	}
 
 	private List<DailyClosing> list() {

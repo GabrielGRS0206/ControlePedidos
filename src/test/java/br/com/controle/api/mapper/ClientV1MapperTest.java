@@ -50,7 +50,7 @@ class ClientV1MapperTest {
 		clients.add(new Client(1l));
 		
 		List<ClientResponseV1Dto> response = mapper.listToDto(clients);
-		assertEquals(response.size(), 3);
+		assertEquals(3, response.size());
 	}
 
 	/**

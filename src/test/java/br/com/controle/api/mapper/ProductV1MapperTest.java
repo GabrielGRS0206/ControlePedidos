@@ -10,6 +10,7 @@ import static org.mockito.Mockito.mock;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -46,14 +47,8 @@ class ProductV1MapperTest {
 	@Test
 	final void testListToDto() {
 
-		List<ProductResponseV1Dto> list = mapper.listToDto(list());
-		assertEquals(list.size(), 1);
-	}
-
-	private List<Product> list() {
-		List<Product> list = new ArrayList<Product>();
-		list.add(new Product(1l));
-		return list;
+		List<ProductResponseV1Dto> list = mapper.listToDto(Arrays.asList(new Product(1l)));
+		assertEquals(1,list.size());
 	}
 
 	/**

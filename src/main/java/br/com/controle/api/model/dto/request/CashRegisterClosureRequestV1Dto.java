@@ -5,7 +5,9 @@ import java.math.BigDecimal;
 import javax.validation.Valid;
 
 import br.com.controle.domain.model.CashRegister;
+import lombok.Data;
 
+@Data
 public class CashRegisterClosureRequestV1Dto {
 
 	private Integer id;
@@ -14,21 +16,4 @@ public class CashRegisterClosureRequestV1Dto {
 	public static CashRegister dtoToEntity(@Valid CashRegisterClosureRequestV1Dto caixaInput) {
 		return new CashRegister(null, caixaInput.getTotal(), false);
 	}
-
-	//=======GETTERS E SETTERS========
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public BigDecimal getTotal() {
-		return total;
-	}
-	public void setTotal(BigDecimal total) {
-		this.total = total;
-	}
-
-
 }
