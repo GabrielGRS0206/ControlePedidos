@@ -131,8 +131,6 @@ class CashRegisterServiceTest {
 		obj.setTotalClosure(BigDecimal.ZERO);
 		when(repository.findById(1l)).thenReturn(Optional.of(obj));
 		
-		boolean retorno = service.openCashRegister(1l);
-		assertEquals(retorno, false);
-		
+		assertEquals(false, service.openCashRegister(1l));
 	}
 }

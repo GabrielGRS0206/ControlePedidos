@@ -1,10 +1,8 @@
 package br.com.controle.api.model.dto.response;
 
+import br.com.controle.domain.utils.Mask;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
-import br.com.controle.domain.utils.Mask;
-import lombok.Data;
 import lombok.Data;
 
 @JsonInclude(Include.NON_NULL)

@@ -80,20 +80,6 @@ class ClientServiceTest {
 		});
 		assertNotNull(exception, "exception");
 	}
-	
-	/**
-	 * Test method for
-	 * {@link br.com.controle.domain.service.ClientService#update(java.lang.Object)}.
-	 */
-	@Test
-	final void testUpdate() {
-		/*Client entity = new Client();
-		entity.setId(1l);
-		when(repository.save(any())).thenReturn(Optional.of(entity));
-		Client client = service.update(entity);
-		assertNotNull(client);
-		verify(repository,times(1)).save(any());*/
-	}
 
 	/**
 	 * Test method for
@@ -160,7 +146,7 @@ class ClientServiceTest {
 		List<Client> clients = service.findAll();
 
 		assertNotNull(clients);
-		assertEquals(clients.size(), 1);
+		assertEquals(1, clients.size());
 	}
 	
 	/**

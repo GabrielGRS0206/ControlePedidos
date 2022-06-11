@@ -22,7 +22,7 @@ public class ProductV1Mapper extends ValidConstrains<Product> {
 	}
 
 	public List<ProductResponseV1Dto> listToDto(List<Product> list) {
-		return list.stream().map(element -> toDto(element)).collect(Collectors.toList());
+		return list.stream().map(element -> this.toDto(element)).collect(Collectors.toList());
 	}
 
 	public Product toEntity(ProductRequestV1Dto request) {

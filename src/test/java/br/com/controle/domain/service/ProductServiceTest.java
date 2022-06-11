@@ -116,7 +116,7 @@ class ProductServiceTest {
 		
 		List<Product> list = service.findAll();
 		assertNotNull(list, "list is null");
-		assertEquals(list.size(), 1);
+		assertEquals(1,list.size());
 	}
 
 	/**
@@ -127,8 +127,7 @@ class ProductServiceTest {
 
 		when(repository.existsById(1l)).thenReturn(true);
 		
-		boolean retorno = service.existsById(1l);
-		assertEquals(retorno, true);
+		assertEquals(true, service.existsById(1l));
 	}
 
 }

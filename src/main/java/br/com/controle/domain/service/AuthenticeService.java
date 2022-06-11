@@ -25,10 +25,6 @@ public class AuthenticeService {
 	@Autowired
 	private UserService userService;
 
-//	public AuthenticeService(JwtTokenUtil tokenService) {
-//		this.serviceToken = tokenService;
-//	}
-
 	public JwtToken authentice(String email,String password) {
 
 		firstValidation(email,password);

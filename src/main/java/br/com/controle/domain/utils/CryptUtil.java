@@ -1,5 +1,7 @@
 package br.com.controle.domain.utils;
 
+import br.com.controle.domain.exception.business.BusinessException;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -20,14 +22,9 @@ public class CryptUtil {
 		try {
 			md = MessageDigest.getInstance("MD5");
 		} catch (NoSuchAlgorithmException e) {
-			throw new RuntimeException(e);
+			throw new BusinessException(e.getMessage());
 		}
 		BigInteger hash = new BigInteger(1, md.digest(value.trim().getBytes()));
 		return hash.toString(16).concat(SECRET);
-	}
-	
-	public static void main(String[] args) {
-		
-		System.out.println(hash("123"));
 	}
 }

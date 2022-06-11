@@ -28,23 +28,9 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 	@Autowired
 	private UserService userService;
 
-	@Value("#{environment.D_LOCAL}")
-	private String s2;
-
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-
-		System.out.println("----->>>" + s2);
-
-		if(true){
-			var userMock = new UserSystem();
-			userMock.setId(1l);
-			userMock.setEmail("teste@gmail.com");
-			userMock.setPassword("ONE");
-			authentice(request, response, filterChain, userMock);
-			return;
-		}
 
 		final String header = request.getHeader(HttpHeaders.AUTHORIZATION);
 		if (isEmpty(header) || !header.startsWith("Bearer ")) {
@@ -58,7 +44,6 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 			return;
 		}
 
-		// -------------------------------------
 		String email = jwtTokenUtil.getTokenId(token);
 
 		UserDetails user = userService.loadUserByUsername(email);
