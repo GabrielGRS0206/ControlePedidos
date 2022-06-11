@@ -3,7 +3,11 @@ package br.com.controle.api.model.dto.response;
 import java.math.BigDecimal;
 
 import br.com.controle.domain.movement.DailyClosing;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@Data
+@EqualsAndHashCode
 public class DailyResponseV1Dto extends BaseResponseDto {
 
 	private Integer codPayment;
@@ -19,29 +23,4 @@ public class DailyResponseV1Dto extends BaseResponseDto {
 	public static DailyResponseV1Dto toDto(DailyClosing dailyClosing) {
 		return new DailyResponseV1Dto(dailyClosing.getCodPayment(), dailyClosing.getPayment(), dailyClosing.getTotal());
 	}
-
-	public Integer getCodPayment() {
-		return codPayment;
-	}
-
-	public void setCodPayment(Integer codPayment) {
-		this.codPayment = codPayment;
-	}
-
-	public String getPayment() {
-		return payment;
-	}
-
-	public void setPayment(String payment) {
-		this.payment = payment;
-	}
-
-	public BigDecimal getTotal() {
-		return total;
-	}
-
-	public void setTotal(BigDecimal total) {
-		this.total = total;
-	}
-
 }

@@ -13,8 +13,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import br.com.controle.domain.utils.Utils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
+@Data
+@EqualsAndHashCode
 @Table(name = "order_item")
 public class OrderItem extends BaseEntity{
 
@@ -48,66 +52,6 @@ public class OrderItem extends BaseEntity{
 	public void setProductId(Long productId) {
 		this.product = new Product(productId);
 		this.productId = productId;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
-
-	public BigDecimal getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(BigDecimal quantity) {
-		this.quantity = quantity;
-	}
-
-	public BigDecimal getPrice() {
-		return price;
-	}
-
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-
-	public BigDecimal getAdditional() {
-		return additional;
-	}
-
-	public void setAdditional(BigDecimal additional) {
-		this.additional = additional;
-	}
-
-	public String getObservation() {
-		return observation;
-	}
-
-	public void setObservation(String observation) {
-		this.observation = observation;
-	}
-
-	public Long getProductId() {
-		return productId;
 	}
 
 	public BigDecimal totalItem() {

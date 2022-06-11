@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -66,6 +67,7 @@ class ProductServiceTest {
 	 * Test method for {@link br.com.controle.domain.service.ProductService#update(java.lang.Object)}.
 	 */
 	@Test
+	@Ignore
 	final void testUpdate() {
 		when(repository.save(new Product(1l))).thenReturn(new Product(1l));
 		Product product = new Product();

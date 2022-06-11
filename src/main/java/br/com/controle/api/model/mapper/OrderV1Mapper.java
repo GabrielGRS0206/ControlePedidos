@@ -68,15 +68,36 @@ public class OrderV1Mapper extends ValidConstrains<Order> {
 	}
 
 	public List<OrderItemResponseV1Dto> itemsToDto(List<OrderItem> items) {
-		return items.stream().map(e -> OrderItemResponseV1Dto.toDto(e)).collect(Collectors.toList());
+		return items.stream().map(e -> toDto(e)).collect(Collectors.toList());
 	}
 
 	private List<OrderItem> itemToEntity(List<OrderItemRequestV1Dto> items) {
-		return items.stream().map(e -> OrderItemRequestV1Dto.dtoToEntity(e)).collect(Collectors.toList());
+		return items.stream().map(e -> dtoToEntityItem(e)).collect(Collectors.toList());
 	}
 
 	public List<OrderResponseV1Dto> listToDto(List<Order> list, String tipo) {
 		return list.stream().map(element -> entityToDto(element, tipo)).collect(Collectors.toList());
+	}
+
+	public static OrderItem dtoToEntityItem(OrderItemRequestV1Dto item) {
+		var entity = new OrderItem();
+		entity.setProductId(item.getId());
+		entity.getProduct().setUnitPrice(item.getPrice());
+		entity.setObservation(item.getObservation());
+		entity.setQuantity(item.getQuantity());
+		entity.setPrice(entity.getProduct().getUnitPrice());
+		return entity;
+	}
+
+	public static OrderItemResponseV1Dto toDto(OrderItem item) {
+		OrderItemResponseV1Dto dto = new OrderItemResponseV1Dto();
+		dto.setIdItem(item.getId());
+		dto.setProductId(item.getProductId());
+		dto.setDescription(item.getProduct().getDescription());
+		dto.setObservation(item.getObservation());
+		dto.setQuantity(item.getQuantity());
+		dto.setTotal(item.totalItem());
+		return dto;
 	}
 
 	private BigDecimal total(List<OrderItem> items) {

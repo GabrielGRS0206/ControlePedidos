@@ -1,16 +1,15 @@
 package br.com.controle.domain.model;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 @Entity
+@Data
+@EqualsAndHashCode
 @Table(name = "cash_register")
 public class CashRegister extends BaseEntity {
 
@@ -39,45 +38,11 @@ public class CashRegister extends BaseEntity {
 		}
 	}
 
-	public CashRegister() {
-		super();
+	public CashRegister(Long cashRegisterId) {
+		this.id = cashRegisterId;
 	}
 
-	public CashRegister(Long id) {
-		this.id = id;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-	public BigDecimal getTotalOpening() {
-		return totalOpening;
-	}
-
-	public void setTotalOpening(BigDecimal totalOpening) {
-		this.totalOpening = totalOpening;
-	}
-
-	public BigDecimal getTotalClosure() {
-		return totalClosure;
-	}
-
-	public void setTotalClosure(BigDecimal totalClosure) {
-		this.totalClosure = totalClosure;
-	}
-	
-
+    public CashRegister() {
+        super();
+    }
 }

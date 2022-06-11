@@ -1,5 +1,8 @@
 package br.com.controle.api.model.dto.request;
 
+import lombok.Data;
+
+@Data
 public class UserRequestV1DTO {
 
 	private String email;
@@ -13,13 +16,4 @@ public class UserRequestV1DTO {
 		this.email = email;
 		this.password = password;
 	}
-
-	public String getEmail() {
-		return email.trim();
-	}
-
-	public String getPassword() {
-		return password.trim();
-	}
-
 }
