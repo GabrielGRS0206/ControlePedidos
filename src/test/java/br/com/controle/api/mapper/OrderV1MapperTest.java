@@ -12,10 +12,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.controle.api.model.dto.request.OrderItemRequestV1Dto;
-import br.com.controle.api.model.dto.request.OrderRequestV1Dto;
-import br.com.controle.api.model.dto.response.OrderResponseV1Dto;
-import br.com.controle.api.model.mapper.OrderV1Mapper;
+import br.com.controle.api.dto.request.OrderItemRequestV1Dto;
+import br.com.controle.api.dto.request.OrderRequestV1Dto;
+import br.com.controle.api.dto.response.OrderResponseV1Dto;
 import br.com.controle.domain.model.Order;
 import br.com.controle.domain.model.OrderItem;
 import br.com.controle.domain.model.Product;
@@ -31,7 +30,7 @@ class OrderV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.model.mapper.OrderV1Mapper#entityToDto(br.com.controle.domain.model.Order, java.lang.String)}.
+	 * {@link OrderV1Mapper#entityToDto(br.com.controle.domain.model.Order, java.lang.String)}.
 	 */
 	@Test
 	void testEntityToDto() {
@@ -57,7 +56,7 @@ class OrderV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.model.mapper.OrderV1Mapper#dtoToEntity(br.com.controle.api.model.dto.request.OrderRequestV1Dto)}.
+	 * {@link OrderV1Mapper#dtoToEntity(OrderRequestV1Dto)}.
 	 */
 	@Test
 	void testDtoToEntity() {
@@ -79,7 +78,7 @@ class OrderV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.model.mapper.OrderV1Mapper#listToDto(br.com.controle.api.model.dto.request.OrderRequestV1Dto)}.
+	 * {@link OrderV1Mapper#listToDto(OrderRequestV1Dto)}.
 	 */
 	@Test
 	void testListToDto() {

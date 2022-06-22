@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.common.base.Strings;
 
-import br.com.controle.api.config.security.JwtTokenUtil;
+import br.com.controle.config.security.JwtTokenUtil;
 import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.exception.business.MessageException;
 import br.com.controle.domain.model.security.JwtToken;

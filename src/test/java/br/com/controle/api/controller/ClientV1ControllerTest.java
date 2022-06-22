@@ -18,8 +18,8 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 
-import br.com.controle.api.model.dto.response.ClientResponseV1Dto;
-import br.com.controle.api.model.mapper.ClientV1Mapper;
+import br.com.controle.api.dto.response.ClientResponseV1Dto;
+import br.com.controle.api.mapper.ClientV1Mapper;
 import br.com.controle.domain.model.Client;
 import br.com.controle.domain.service.ClientService;
 import br.com.controle.domain.utils.Utils;
