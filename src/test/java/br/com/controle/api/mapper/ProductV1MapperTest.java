@@ -9,15 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.controle.api.model.dto.request.ProductRequestV1Dto;
-import br.com.controle.api.model.dto.response.ProductResponseV1Dto;
-import br.com.controle.api.model.mapper.ProductV1Mapper;
+import br.com.controle.api.dto.request.ProductRequestV1Dto;
+import br.com.controle.api.dto.response.ProductResponseV1Dto;
 import br.com.controle.domain.exception.business.DtoInvalidException;
 import br.com.controle.domain.model.Product;
 import br.com.controle.domain.utils.Utils;
@@ -31,7 +29,7 @@ class ProductV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.model.mapper.ProductV1Mapper#toDto(br.com.controle.domain.model.Product)}.
+	 * {@link ProductV1Mapper#toDto(br.com.controle.domain.model.Product)}.
 	 */
 	@Test
 	final void testToDto() {
@@ -42,7 +40,7 @@ class ProductV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.model.mapper.ProductV1Mapper#listToDto(java.util.List)}.
+	 * {@link ProductV1Mapper#listToDto(java.util.List)}.
 	 */
 	@Test
 	final void testListToDto() {
@@ -53,7 +51,7 @@ class ProductV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.model.mapper.ProductV1Mapper#toEntity(br.com.controle.api.model.dto.request.ProductRequestV1Dto)}.
+	 * {@link ProductV1Mapper#toEntity(ProductRequestV1Dto)}.
 	 */
 	@Test
 	final void testToEntity() {
@@ -69,7 +67,7 @@ class ProductV1MapperTest {
 
 	/**
 	 * Test method for
-	 * {@link br.com.controle.api.model.mapper.ProductV1Mapper#toEntity(br.com.controle.api.model.dto.request.ProductRequestV1Dto)}.
+	 * {@link ProductV1Mapper#toEntity(ProductRequestV1Dto)}.
 	 */
 	@Test
 	final void testToEntityThrowsException() {

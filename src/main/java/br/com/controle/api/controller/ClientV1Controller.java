@@ -24,9 +24,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.controle.api.model.dto.request.ClientRequestV1Dto;
-import br.com.controle.api.model.dto.response.ClientResponseV1Dto;
-import br.com.controle.api.model.mapper.ClientV1Mapper;
+import br.com.controle.api.dto.request.ClientRequestV1Dto;
+import br.com.controle.api.dto.response.ClientResponseV1Dto;
+import br.com.controle.api.mapper.ClientV1Mapper;
 import br.com.controle.domain.model.Client;
 import br.com.controle.domain.service.ClientService;
 import br.com.controle.domain.service.validation.DeleteClientValidation;

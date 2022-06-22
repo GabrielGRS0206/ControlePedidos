@@ -13,7 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import br.com.controle.api.config.security.JwtTokenUtil;
+import br.com.controle.config.security.JwtTokenUtil;
 import br.com.controle.domain.exception.business.BusinessException;
 import br.com.controle.domain.model.security.JwtToken;
 import br.com.controle.domain.model.security.UserSystem;
@@ -48,7 +48,7 @@ class AuthenticeServiceTest {
 	}
 
 	/**
-	 * Test method for {@link br.com.controle.domain.service.AuthenticeService#AuthenticeService(br.com.controle.api.config.security.JwtTokenUtil)}.
+	 * Test method for {@link br.com.controle.domain.service.AuthenticeService#AuthenticeService(JwtTokenUtil)}.
 	 */
 	@Test
 	final void testAuthenticeService() {
@@ -60,7 +60,7 @@ class AuthenticeServiceTest {
 	}
 
 	/**
-	 * Test method for {@link br.com.controle.domain.service.AuthenticeService#AuthenticeService(br.com.controle.api.config.security.JwtTokenUtil)}.
+	 * Test method for {@link br.com.controle.domain.service.AuthenticeService#AuthenticeService(JwtTokenUtil)}.
 	 */
 	@Test
 	final void testAuthenticeServicehThrowsLoginInvalido() {
@@ -74,7 +74,7 @@ class AuthenticeServiceTest {
 	}
 	
 	/**
-	 * Test method for {@link br.com.controle.domain.service.AuthenticeService#AuthenticeService(br.com.controle.api.config.security.JwtTokenUtil)}.
+	 * Test method for {@link br.com.controle.domain.service.AuthenticeService#AuthenticeService(JwtTokenUtil)}.
 	 */
 	@Test
 	final void testAuthenticeServicehThrowsFirstValidation() {
@@ -88,7 +88,7 @@ class AuthenticeServiceTest {
 	}
 	
 	/**
-	 * Test method for {@link br.com.controle.domain.service.AuthenticeService#AuthenticeService(br.com.controle.api.config.security.JwtTokenUtil)}.
+	 * Test method for {@link br.com.controle.domain.service.AuthenticeService#AuthenticeService(JwtTokenUtil)}.
 	 */
 	@Test
 	final void testAuthenticeServicehThrowsUserBlock() {
@@ -104,7 +104,7 @@ class AuthenticeServiceTest {
 	}
 	
 	/**
-	 * Test method for {@link br.com.controle.domain.service.AuthenticeService#AuthenticeService(br.com.controle.api.config.security.JwtTokenUtil)}.
+	 * Test method for {@link br.com.controle.domain.service.AuthenticeService#AuthenticeService(JwtTokenUtil)}.
 	 */
 	@Test
 	final void testAuthenticeServicehThrowsPasswordFalse() {
@@ -120,7 +120,7 @@ class AuthenticeServiceTest {
 	}
 	
 	/**
-	 * Test method for {@link br.com.controle.domain.service.AuthenticeService#AuthenticeService(br.com.controle.api.config.security.JwtTokenUtil)}.
+	 * Test method for {@link br.com.controle.domain.service.AuthenticeService#AuthenticeService(JwtTokenUtil)}.
 	 */
 	@Test
 	final void testAuthenticeServicehThrowsMaxErrorPassword() {

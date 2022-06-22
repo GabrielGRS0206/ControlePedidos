@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.controle.api.model.dto.request.UserRequestV1DTO;
-import br.com.controle.api.model.dto.response.UserAuthenticeResponseV1DTO;
+import br.com.controle.api.dto.request.UserRequestV1DTO;
+import br.com.controle.api.dto.response.UserAuthenticeResponseV1DTO;
 import br.com.controle.domain.model.security.JwtToken;
 import br.com.controle.domain.service.AuthenticeService;
 import io.swagger.annotations.Api;
