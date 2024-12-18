@@ -1,0 +1,15 @@
+mysql:
+  image: mysql:5.7
+  container_name: mysql
+  environment:
+    MYSQL_DATABASE: 'banco_controle'
+    #    We cannot set user as 'root' if mysql is below version of 5.x: https://github.com/docker-library/mysql/issues/129
+    MYSQL_USER: 'master'
+    MYSQL_PASSWORD: 'master'
+    MYSQL_ROOT_PASSWORD: 'master'
+  ports:
+    - "3306:3306"
+  volumes:
+    - ./data/conf.d:/etc/mysql/conf.d
+    - ./data/logs:/logs
+    - /usr/local/var/mysql:/var/lib/mysql
